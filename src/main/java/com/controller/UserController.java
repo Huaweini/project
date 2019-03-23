@@ -48,7 +48,7 @@ public class UserController {
             String str = Long.toString(new Date().getTime());
             u.setLoginName(Long.toString(new Date().getTime()));
             u.setPassword("123456");
-            u.setRealName("李志博"+str.substring(str.length()-4,str.length()));
+            u.setRealName("华为倪"+str.substring(str.length()-4,str.length()));
             u.setGroupId(12);
             userService.insert(u);
         }
