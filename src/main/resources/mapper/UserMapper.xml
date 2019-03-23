@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+    <resultMap type="User" id="userResultMap">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="loginName" column="login_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="groupId" column="group_id" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="select">
+      SELECT * FROM t_sys_user
+    </sql>
+    <select id="selectByParam" resultMap="userResultMap">
+        <include refid="select"/>
+    </select>
+    <select id="pageList" resultMap="userResultMap">
+        <include refid="select"/>
+        limit #{offset},#{size}
+    </select>
+    <select id="pageTotal" resultType="java.lang.Integer">
+        select count(*) from t_sys_user
+    </select>
+    <insert id="insertSelective">
+        INSERT into t_sys_user (login_name,password,real_name,group_id)
+        VALUES (#{loginName},#{password},#{realName},#{groupId});
+    </insert>
+</mapper>
