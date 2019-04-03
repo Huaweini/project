@@ -3,30 +3,11 @@ package com.pojo;
 public class User {
     private Long id;
     private String loginName;
-    private String password;
     private String realName;
-    private Integer groupId;
-    private Integer num;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", loginName='" + loginName + '\'' +
-                ", password='" + password + '\'' +
-                ", realName='" + realName + '\'' +
-                ", groupId=" + groupId +
-                ", num=" + num +
-                '}';
-    }
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
+    private Integer classNum;
+    private Integer age;
+    private String sex;
+    private String grade;
 
     public Long getId() {
         return id;
@@ -44,14 +25,6 @@ public class User {
         this.loginName = loginName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getRealName() {
         return realName;
     }
@@ -60,12 +33,36 @@ public class User {
         this.realName = realName;
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    public Integer getClassNum() {
+        return classNum;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setClassNum(Integer classNum) {
+        this.classNum = classNum;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
 }
+

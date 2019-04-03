@@ -41,33 +41,28 @@ public class UserController {
         return "user_list";
     }
 
-
-    @RequestMapping("/toTestPage")
-    public String toTestPage(User u , Model model){
-        for (int i=0;i<=50;i++){
-            String str = Long.toString(new Date().getTime());
-            u.setLoginName(Long.toString(new Date().getTime()));
-            u.setPassword("123456");
-            u.setRealName("华为倪"+str.substring(str.length()-4,str.length()));
-            u.setGroupId(12);
-            userService.insert(u);
-        }
-
-        List<User> list = userService.selectList(new User());
-        model.addAttribute("list", list);
-        return "test_list";
+    @RequestMapping("/addUser")
+    @ResponseBody
+    public String addUser(User user) {
+        return "adduser";
     }
 
-//    @RequestMapping("/toTest")
-//    public  String toTest( Integer user){
-//        System.out.println(user);
+
+//    @RequestMapping("/toTestPage")
+//    public String toTestPage(User u , Model model){
+//        for (int i=0;i<=50;i++){
+//            String str = Long.toString(new Date().getTime());
+//            u.setLoginName(Long.toString(new Date().getTime()));
+//            u.setPassword("123456");
+//            u.setRealName("华为倪"+str.substring(str.length()-4,str.length()));
+//            u.setGroupId(12);
+//            userService.insert(u);
+//        }
+//
+//        List<User> list = userService.selectList(new User());
+//        model.addAttribute("list", list);
 //        return "test_list";
 //    }
 
-//    public JSONObject addNumber(@RequestParam("num") String num) {
-//        JSONObject json = new JSONObject();
-//        json.put("result", num);
-//        return json;
-//    }
 
 }
