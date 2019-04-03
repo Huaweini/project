@@ -43,7 +43,7 @@ public class UserController {
 
     @RequestMapping("/addUser")
     @ResponseBody
-    public String addUser(User user) {
+    public String addUser() {
         return "adduser";
     }
 
