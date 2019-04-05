@@ -28,12 +28,12 @@
         function addUser(){
             var ajax = {
                 contentType: "application/json;charset=UTF-8",
-                url: "./addUser",
-                data:{},
+                url: "/user/addUser",
+                data:$('#saveForm').serializeArray(),
                 type:"post",
                 dataType:"json",
-                success: function () {
-
+                success: function (data) {
+                    console.log(data)
                 },
             }
             $.ajax(ajax)
@@ -77,34 +77,34 @@
 </head>
 <body>
 <div>
-    <form>
+    <form id="saveForm">
         <table class="altrowstable" id="alternatecolor">
             <tr>
                 <td>昵称</td>
-                <td><input name="loginName"/></td>
+                <td><input name="loginName" type="text"/></td>
             </tr>
             <tr>
                 <td>年级</td>
-                <td><input name="grade"/></td>
+                <td><input name="grade" type="text"/></td>
             </tr>
             <tr>
                 <td>班级</td>
-                <td><input name="classNum"/></td>
+                <td><input name="classNum" type="text"/></td>
             </tr>
             <tr>
                 <td>姓名</td>
-                <td><input name="realName"/></td>
+                <td><input name="realName" type="text"/></td>
             </tr>
             <tr>
                 <td>年龄</td>
-                <td><input name="age"/></td>
+                <td><input name="age" type="text"/></td>
             </tr>
             <tr>
                 <td>性别</td>
-                <td><input name="sex"/></td>
+                <td><input name="sex" type="text"/></td>
             </tr>
         </table>
-        <button onclick="addUser()">提交</button>
+        <input onclick="addUser()" type="button" value="提交"/>
     </form>
 </div>
 </body>

@@ -44,8 +44,14 @@ public class UserController {
 
     @RequestMapping("/addUser")
     @ResponseBody
-    public String addUser(User user) {
+    public Object addUser(User user) {
         userService.insert(user);
+
+        return user;
+    }
+
+    @RequestMapping("/addUserList")
+    public String addUserList() {
         return "adduser";
     }
 
