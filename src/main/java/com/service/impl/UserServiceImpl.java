@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int insert(User sqlName) {
-        return userDao.insertSelective(sqlName);
+    public int insert(User param) {
+        return userDao.insertSelective(param);
     }
 
     @Override

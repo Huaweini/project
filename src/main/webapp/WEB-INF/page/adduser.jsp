@@ -24,6 +24,20 @@
         window.onload = function () {
             altRows('alternatecolor');
         }
+
+        function addUser(){
+            var ajax = {
+                contentType: "application/json;charset=UTF-8",
+                url: "./addUser",
+                data:{},
+                type:"post",
+                dataType:"json",
+                success: function () {
+
+                },
+            }
+            $.ajax(ajax)
+        }
     </script>
 
 
@@ -90,6 +104,7 @@
                 <td><input name="sex"/></td>
             </tr>
         </table>
+        <button onclick="addUser()">提交</button>
     </form>
 </div>
 </body>

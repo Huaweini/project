@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.pojo.Page;
 import com.pojo.User;
 import com.service.UserService;
@@ -43,7 +44,8 @@ public class UserController {
 
     @RequestMapping("/addUser")
     @ResponseBody
-    public String addUser() {
+    public String addUser(User user) {
+        userService.insert(user);
         return "adduser";
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserService {
     List<User> selectList(User param);
 
-    int insert(User sqlName);
+    int insert(User param);
 
     Page<User> getPageByParam(Page<User> page, User param);
 
