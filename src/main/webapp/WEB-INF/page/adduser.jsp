@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>新增</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
         function altRows(id) {
             if (document.getElementsByTagName) {
@@ -26,13 +27,14 @@
         }
 
         function addUser(){
+            console.info($('#saveForm').serializeArray())
             var ajax = {
-                contentType: "application/json;charset=UTF-8",
-                url: "/user/addUser",
+                url: "${pageContext.request.contextPath}/user/addUser",
                 data:$('#saveForm').serializeArray(),
                 type:"post",
                 dataType:"json",
                 success: function (data) {
+
                     console.log(data)
                 },
             }
@@ -81,7 +83,7 @@
         <table class="altrowstable" id="alternatecolor">
             <tr>
                 <td>昵称</td>
-                <td><input name="loginName" type="text"/></td>
+                <td><input name="loginName" type="text" value="testtesttest"/></td>
             </tr>
             <tr>
                 <td>年级</td>

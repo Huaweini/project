@@ -46,7 +46,6 @@ public class UserController {
     @ResponseBody
     public Object addUser(User user) {
         userService.insert(user);
-
         return user;
     }
 

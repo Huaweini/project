@@ -28,7 +28,7 @@
     <select id="select">
 
     </select>
-    <insert id="insertSelective">
+    <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_sys_user (login_name,class_num,real_name,age,sex,grade)
         VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
     </insert>
