@@ -25,11 +25,23 @@
     <select id="pageTotal" resultType="java.lang.Integer">
         select count(*) from t_sys_user
     </select>
-    <select id="select">
-
+    <select id="getById" resultMap="userResultMap">
+      select * form t_sys_user WHERE id = #{id}
     </select>
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_sys_user (login_name,class_num,real_name,age,sex,grade)
         VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
     </insert>
+    <update id="updateSelective">
+        UPDATE t_sys_user
+          <set>
+              <if test="loginName!=null">login_name = #{loginName},</if>
+              <if test="classNum!=null">class_num = #{classNum},</if>
+              <if test="realName!=null">real_name = #{realName},</if>
+              <if test="age!=null">age = #{age},</if>
+              <if test="sex!=null">sex = #{sex},</if>
+              <if test="grade!=null">grade = #{grade}</if>
+          </set>
+        WHERE id = #{id}
+    </update>
 </mapper>

@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
         return page;
     }
 
+    @Override
+    public int update(User param) {
+        return userDao.insertSelective(param);
+    }
+
 }

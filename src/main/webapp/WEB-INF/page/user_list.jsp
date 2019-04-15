@@ -13,9 +13,13 @@
 <head>
     <title>用户列表</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 引入 Bootstrap -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <link  href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"
+           rel="stylesheet">
+    <script src="../bootstrap-3.3.7-dist/js/jquery-3.2.1.js"></script>
+    <script
+            src="../bootstrap-3.3.7-dist/js/bootstrap.min.js">
+    </script>
 
     <script type="text/javascript">
         function altRows(id){
@@ -43,7 +47,6 @@
     <!-- CSS goes in the document HEAD or added to your external stylesheet -->
     <style type="text/css">
         table.altrowstable {
-            font-family: verdana,arial,sans-serif;
             font-size:11px;
             color:#333333;
             border-width: 1px;
@@ -108,6 +111,22 @@
             $.ajax(ajax)
         }
 
+        function edit(userId) {
+            var id = $('.userId').val;
+            var ajax = {
+                contentType: "application/json;charset=UTF-8",
+                url: "./editUserList",
+                data: {"id":id},
+                type: "post",
+                dataType: "json",
+                success: function () {
+
+                },
+            }
+            $.ajax(ajax)
+        }
+
+
     </script>
 </head>
 <body>
@@ -131,7 +150,7 @@
         <tbody>
         <c:forEach var="user" items="${page.res}" varStatus="status">
             <tr>
-                <td>${user.id}</td>
+                <td class=".userId">${user.id}</td>
                 <td>${user.loginName}</td>
                 <td>${user.grade}</td>
                 <td>${user.classNum}</td>
@@ -139,7 +158,7 @@
                 <td>${user.age}</td>
                 <td>${user.sex}</td>
                 <td>
-                    <span>修改</span>
+                    <span  onclick="edit(${user.id})">修改</span>
                 </td>
                 <td>
 

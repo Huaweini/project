@@ -49,9 +49,23 @@ public class UserController {
         return user;
     }
 
+    @RequestMapping("/editUser")
+    @ResponseBody
+    public Object editUser(User user) {
+        userService.update(user);
+        return user;
+    }
+
     @RequestMapping("/addUserList")
     public String addUserList() {
         return "adduser";
+    }
+
+    @RequestMapping("/editUserList")
+    public String editUserList(Long id) {
+        User u = new User();
+        u.setId(id);
+        return "edituser";
     }
 
 

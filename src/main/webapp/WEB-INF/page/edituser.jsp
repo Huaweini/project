@@ -5,33 +5,15 @@
 <head>
     <title>新增</title>
     <link  href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"
-            rel="stylesheet">
+           rel="stylesheet">
     <script src="../bootstrap-3.3.7-dist/js/jquery-3.2.1.js"></script>
     <script
-            src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"> 
+            src="../bootstrap-3.3.7-dist/js/bootstrap.min.js">
     </script>
     <script type="text/javascript">
-        function altRows(id) {
-            if (document.getElementsByTagName) {
-
-                var table = document.getElementById(id);
-                var rows = table.getElementsByTagName("tr");
-
-                for (i = 0; i < rows.lengtd; i++) {
-                    if (i % 2 == 0) {
-                        rows[i].className = "evenrowcolor";
-                    } else {
-                        rows[i].className = "oddrowcolor";
-                    }
-                }
-            }
-        }
-
-        window.onload = function () {
-            altRows('alternatecolor');
-        }
 
         function addUser(){
+            console.info($('#saveForm').serializeArray())
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/addUser",
                 data:$('#saveForm').serializeArray(),
@@ -39,6 +21,7 @@
                 dataType:"json",
                 success: function (data) {
 
+                    console.log(data)
                 },
             }
             $.ajax(ajax)
@@ -84,30 +67,38 @@
 <div>
     <form id="saveForm">
         <table class="altrowstable" id="alternatecolor">
+        <c:forEach var="user" items="${page.res}" varStatus="status">
             <tr>
                 <td>昵称</td>
-                <td><input name="loginName" type="text" value="testtesttest"/></td>
+                <td><input name="loginName" type="text"
+                value="${user.loginName}"/></td>
             </tr>
             <tr>
                 <td>年级</td>
-                <td><input name="grade" type="text"/></td>
+                <td><input name="grade" type="text"
+                value="${user.grade}"/></td>
             </tr>
             <tr>
                 <td>班级</td>
-                <td><input name="classNum" type="text"/></td>
+                <td><input name="classNum" type="text"
+                value="${user.classNum}"/></td>
             </tr>
             <tr>
                 <td>姓名</td>
-                <td><input name="realName" type="text"/></td>
+                <td><input name="realName" type="text"
+                value="${user.realName}"/></td>
             </tr>
             <tr>
                 <td>年龄</td>
-                <td><input name="age" type="text"/></td>
+                <td><input name="age" type="text"
+                value="${user.age}"/></td>
             </tr>
             <tr>
                 <td>性别</td>
-                <td><input name="sex" type="text"/></td>
+                <td><input name="sex" type="text"
+                value="${user.sex}"/></td>
             </tr>
+        </c:forEach>
         </table>
         <input onclick="addUser()" type="button" value="提交"/>
     </form>
