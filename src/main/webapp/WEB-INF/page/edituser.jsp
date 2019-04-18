@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>新增</title>
+    <title>修改</title>
     <link  href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"
            rel="stylesheet">
     <script src="../bootstrap-3.3.7-dist/js/jquery-3.2.1.js"></script>

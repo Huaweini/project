@@ -74,11 +74,12 @@
             $.ajax(ajax)
         }
 
-        function edit(userId) {
-            var id = $('.userId').val;
+        function edit() {
+            var id = $('#userid').val;
+            console.log(id);
             var ajax = {
                 contentType: "application/json;charset=UTF-8",
-                url: "./editUserList",
+                url: "${pageContext.request.contextPath}/user/editUser",
                 data: {"id": id},
                 type: "post",
                 dataType: "json",
@@ -89,9 +90,6 @@
             $.ajax(ajax)
         }
 
-        function goUrl() {
-            window.location.href = "${pageContext.request.contextPath}/user/addUserList"
-        }
             function addUser(){
                 var ajax = {
                     url: "${pageContext.request.contextPath}/user/addUser",
@@ -181,8 +179,12 @@
                             <td>${user.realName}</td>
                             <td>${user.age}</td>
                             <td>${user.sex}</td>
+                            <div class="hidden" id="userid">${user.id}</div>
                             <td>
-                                <span onclick="edit(${user.id})">修改</span>
+                                <!-- 按钮触发模态框 -->
+                                <button type="button" class="btn btn-default"
+                                        data-toggle="modal" data-target="#myModal1">修改
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -265,6 +267,55 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" onclick="addUser()">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--修改页面-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel1">修改</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <form id="saveForm1">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>昵称</td>
+                                <td><input name="loginName" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>年级</td>
+                                <td><input name="grade" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>班级</td>
+                                <td><input name="classNum" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>姓名</td>
+                                <td><input name="realName" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>年龄</td>
+                                <td><input name="age" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td><input name="sex" type="text"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="edit()">提交</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->

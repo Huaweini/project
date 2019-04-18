@@ -52,7 +52,6 @@ public class UserController {
     @RequestMapping("/editUser")
     @ResponseBody
     public Object editUser(User user) {
-        userService.update(user);
         return user;
     }
 
@@ -62,9 +61,10 @@ public class UserController {
     }
 
     @RequestMapping("/editUserList")
-    public String editUserList(Long id) {
+    public String editUserList(Long id , Model model) {
         User u = new User();
         u.setId(id);
+        model.addAttribute(id);
         return "edituser";
     }
 

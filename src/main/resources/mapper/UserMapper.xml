@@ -15,24 +15,30 @@
     <sql id="select">
       SELECT * FROM t_sys_user
     </sql>
+
     <select id="selectByParam" resultMap="userResultMap">
         <include refid="select"/>
     </select>
+
     <select id="pageList" resultMap="userResultMap">
         <include refid="select"/>
         limit #{offset},#{size}
     </select>
+
     <select id="pageTotal" resultType="java.lang.Integer">
         select count(*) from t_sys_user
     </select>
+
     <select id="getById" resultMap="userResultMap">
       select * form t_sys_user WHERE id = #{id}
     </select>
+
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_sys_user (login_name,class_num,real_name,age,sex,grade)
         VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
     </insert>
-    <update id="updateSelective">
+
+    <update id="updateSelective" parameterType="com.pojo.User">
         UPDATE t_sys_user
           <set>
               <if test="loginName!=null">login_name = #{loginName},</if>
@@ -44,4 +50,5 @@
           </set>
         WHERE id = #{id}
     </update>
+
 </mapper>
