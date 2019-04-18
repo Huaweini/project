@@ -31,7 +31,8 @@
     <link href="dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -41,30 +42,6 @@
     <![endif]-->
 
     <script type="text/javascript">
-        function altRows(id){
-            if(document.getElementsByTagName){
-
-                var table = document.getElementById(id);
-                var rows = table.getElementsByTagName("tr");
-
-                for(i = 0; i < rows.length; i++){
-                    if(i % 2 == 0){
-                        rows[i].className = "evenrowcolor";
-                    }else{
-                        rows[i].className = "oddrowcolor";
-                    }
-                }
-            }
-        }
-
-        window.onload=function(){
-            altRows('alternatecolor');
-        }
-    </script>
-
-
-
-    <script>
         var page = ${page.page};//当前页
         var size = ${page.size};//每页显示的条数
         var total = ${page.total};//数据总条数
@@ -73,9 +50,7 @@
             var ajax = {
                 contentType: "application/json;charset=UTF-8",
                 url: "./changePage",
-                data: {
-
-                },
+                data: {},
                 type: "post",
                 dataType: "json",
                 success: function () {
@@ -89,9 +64,7 @@
             var ajax = {
                 contentType: "application/json;charset=UTF-8",
                 url: "./changePage",
-                data: {
-
-                },
+                data: {},
                 type: "post",
                 dataType: "json",
                 success: function () {
@@ -106,7 +79,7 @@
             var ajax = {
                 contentType: "application/json;charset=UTF-8",
                 url: "./editUserList",
-                data: {"id":id},
+                data: {"id": id},
                 type: "post",
                 dataType: "json",
                 success: function () {
@@ -117,10 +90,20 @@
         }
 
         function goUrl() {
-            window.location.href="${pageContext.request.contextPath}/user/addUserList"
+            window.location.href = "${pageContext.request.contextPath}/user/addUserList"
         }
-
-
+            function addUser(){
+                var ajax = {
+                    url: "${pageContext.request.contextPath}/user/addUser",
+                    data:$('#saveForm').serializeArray(),
+                    type:"post",
+                    dataType:"json",
+                    success: function (data) {
+                        window.location.reload()
+                    },
+                }
+                $.ajax(ajax)
+            }
     </script>
 </head>
 <body>
@@ -128,7 +111,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -171,6 +155,10 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
             <h2 class="sub-header">学生管理</h2>
+            <div>
+                <!-- 按钮触发模态框 -->
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">新增</button>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -194,7 +182,7 @@
                             <td>${user.age}</td>
                             <td>${user.sex}</td>
                             <td>
-                                <span  onclick="edit(${user.id})">修改</span>
+                                <span onclick="edit(${user.id})">修改</span>
                             </td>
                         </tr>
                     </c:forEach>
@@ -207,9 +195,79 @@
                 <input name="page" type="text" value="${page.page + 1}">
                 <span>总共 ${page.total} 条数据</span>
                 <a href="/user/page?${page.page+1}">下一页</a>
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a href="/user/page?${page.page-1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="/user/page?${page.page+1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <span style="text-align: right">总共 ${page.total} 条数据</span>
+                    </ul>
+                </nav>
             </form>
         </div>
     </div>
+</div>
+
+<!--新增页面-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">新增</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <form id="saveForm">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>昵称</td>
+                                <td><input name="loginName" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>年级</td>
+                                <td><input name="grade" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>班级</td>
+                                <td><input name="classNum" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>姓名</td>
+                                <td><input name="realName" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>年龄</td>
+                                <td><input name="age" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td><input name="sex" type="text"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="addUser()">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 
 <!-- Bootstrap core JavaScript
