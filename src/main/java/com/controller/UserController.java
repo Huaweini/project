@@ -68,6 +68,11 @@ public class UserController {
         return "edituser";
     }
 
+    @RequestMapping("/temp")
+    public String temp (){
+        return "temp";
+    }
+
 
 //    @RequestMapping("/toTestPage")
 //    public String toTestPage(User u , Model model){

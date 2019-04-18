@@ -126,13 +126,17 @@
             $.ajax(ajax)
         }
 
+        function goUrl() {
+            window.location.href="${pageContext.request.contextPath}/user/addUserList"
+        }
+
 
     </script>
 </head>
 <body>
     <div>
         <div>
-            <button>新增</button>
+            <button onclick="goUrl()">新增</button>
         </div>
     <table class="altrowstable" id="alternatecolor">
         <thead>
@@ -159,9 +163,6 @@
                 <td>${user.sex}</td>
                 <td>
                     <span  onclick="edit(${user.id})">修改</span>
-                </td>
-                <td>
-
                 </td>
             </tr>
         </c:forEach>
