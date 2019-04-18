@@ -69,7 +69,9 @@ public class UserController {
     }
 
     @RequestMapping("/temp")
-    public String temp (){
+    public String temp (Model model, Page<User> page){
+            page = userService.getPageByParam(page,new User());
+            model.addAttribute("page", page);
         return "temp";
     }
 
