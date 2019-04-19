@@ -17,30 +17,9 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
     <title>学生管理系统</title>
-
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]>
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
     <script type="text/javascript">
         var page = ${page.page};//当前页
         var size = ${page.size};//每页显示的条数
@@ -69,23 +48,7 @@
                 dataType: "json",
                 success: function () {
                     window.location.reload()
-                },
-            }
-            $.ajax(ajax)
-        }
-
-        function edit() {
-            var id = $('#userid').val;
-            console.log(id);
-            var ajax = {
-                contentType: "application/json;charset=UTF-8",
-                url: "${pageContext.request.contextPath}/user/editUser",
-                data: {"id": id},
-                type: "post",
-                dataType: "json",
-                success: function () {
-
-                },
+                }
             }
             $.ajax(ajax)
         }
@@ -98,10 +61,62 @@
                     dataType:"json",
                     success: function (data) {
                         window.location.reload()
-                    },
+                    }
                 }
                 $.ajax(ajax)
             }
+
+            function editPage(id) {
+                console.log(id);
+                var ajax = {
+                    url: "${pageContext.request.contextPath}/user/editUserList",
+                    data:{
+                        "id":id
+                    },
+                    type:"post",
+                    dataType:"json",
+                    success:function (res) {
+                        $("input[name='realName']").val(res.realName);
+                        $("input[name='loginName']").val(res.loginName);
+                        $("input[name='grade']").val(res.grade);
+                        $("input[name='classNum']").val(res.classNum);
+                        $("input[name='age']").val(res.age);
+                        $("input[name='sex']").val(res.sex);
+                    }
+                }
+                $.ajax(ajax)
+            }
+
+        function edit() {
+            var id = $('.userid').val;
+            var loginName = $('.loginName').val;
+            var grade = $('.grade').val;
+            var classNum = $('.classNum').val;
+            var realName = $('.realName').val;
+            var age = $('.age').val;
+            var sex = $('.sex').val;
+
+            var ajax = {
+                contentType: "application/json;charset=UTF-8",
+                url: "${pageContext.request.contextPath}/user/editUser",
+                data: {
+                    "id":id,
+                    "loginName":loginName,
+                    "grade":grade,
+                    "classNum":classNum,
+                    "realName":realName,
+                    "age":age,
+                    "sex":sex
+                },
+                type: "post",
+                dataType: "json",
+                success: function () {
+
+                },
+            }
+            $.ajax(ajax)
+        }
+
     </script>
 </head>
 <body>
@@ -179,10 +194,9 @@
                             <td>${user.realName}</td>
                             <td>${user.age}</td>
                             <td>${user.sex}</td>
-                            <div class="hidden" id="userid">${user.id}</div>
                             <td>
                                 <!-- 按钮触发模态框 -->
-                                <button type="button" class="btn btn-default"
+                                <button type="button" class="btn btn-default" onclick="editPage(${user.id})"
                                         data-toggle="modal" data-target="#myModal1">修改
                                 </button>
                             </td>
@@ -274,7 +288,7 @@
 
 <!--修改页面-->
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -285,30 +299,30 @@
                 <div class="table-responsive">
                     <form id="saveForm1">
                         <table class="table table-striped">
-                            <tr>
-                                <td>昵称</td>
-                                <td><input name="loginName" type="text"/></td>
-                            </tr>
-                            <tr>
-                                <td>年级</td>
-                                <td><input name="grade" type="text"/></td>
-                            </tr>
-                            <tr>
-                                <td>班级</td>
-                                <td><input name="classNum" type="text"/></td>
-                            </tr>
-                            <tr>
-                                <td>姓名</td>
-                                <td><input name="realName" type="text"/></td>
-                            </tr>
-                            <tr>
-                                <td>年龄</td>
-                                <td><input name="age" type="text"/></td>
-                            </tr>
-                            <tr>
-                                <td>性别</td>
-                                <td><input name="sex" type="text"/></td>
-                            </tr>
+                                <tr>
+                                    <td>昵称</td>
+                                    <td><input name="loginName" type="text" class="loginName"/></td>
+                                </tr>
+                                <tr>
+                                    <td>年级</td>
+                                    <td><input name="grade" type="text" class="grade"/></td>
+                                </tr>
+                                <tr>
+                                    <td>班级</td>
+                                    <td><input name="classNum" type="text" class="classNum"/></td>
+                                </tr>
+                                <tr>
+                                    <td>姓名</td>
+                                    <td><input name="realName" type="text" class="realName"/></td>
+                                </tr>
+                                <tr>
+                                    <td>年龄</td>
+                                    <td><input name="age" type="text" class="age"/></td>
+                                </tr>
+                                <tr>
+                                    <td>性别</td>
+                                    <td><input name="sex" type="text" class="sex"/></td>
+                                </tr>
                         </table>
                     </form>
                 </div>
@@ -318,8 +332,8 @@
                 <button type="button" class="btn btn-primary" onclick="edit()">提交</button>
             </div>
         </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
 </div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -327,9 +341,5 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

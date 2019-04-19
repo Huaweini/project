@@ -20,6 +20,11 @@
         <include refid="select"/>
     </select>
 
+    <select id="selectById" resultMap="userResultMap">
+        <include refid="select"/>
+        where id=#{id}
+    </select>
+
     <select id="pageList" resultMap="userResultMap">
         <include refid="select"/>
         limit #{offset},#{size}
@@ -38,7 +43,7 @@
         VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
     </insert>
 
-    <update id="updateSelective" parameterType="com.pojo.User">
+    <update id="update" parameterType="com.pojo.User">
         UPDATE t_sys_user
           <set>
               <if test="loginName!=null">login_name = #{loginName},</if>

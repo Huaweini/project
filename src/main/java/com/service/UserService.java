@@ -12,6 +12,8 @@ public interface UserService {
 
     Page<User> getPageByParam(Page<User> page, User param);
 
-    int update(User param);
+    User update(User param);
+
+    User selectById(Long id);
 
 }

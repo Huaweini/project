@@ -34,8 +34,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int update(User param) {
-        return userDao.updateSelective(param);
+    public User update(User param) {
+        return userDao.update(param);
+    }
+
+    @Override
+    public User selectById(Long id) {
+        return userDao.selectById(id);
     }
 
 }

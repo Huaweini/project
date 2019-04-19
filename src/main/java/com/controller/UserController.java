@@ -7,6 +7,7 @@ import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,13 +20,6 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @RequestMapping("/all")
-    public String list(Model model) {
-        List<User> list = userService.selectList(new User());
-        model.addAttribute("list", list);
-        return "user_list";
-    }
 
     @RequestMapping("/page")
     public String list(Model model, Page<User> page) {
@@ -52,7 +46,7 @@ public class UserController {
     @RequestMapping("/editUser")
     @ResponseBody
     public Object editUser(User user) {
-        return user;
+        return userService.update(user);
     }
 
     @RequestMapping("/addUserList")
@@ -61,20 +55,10 @@ public class UserController {
     }
 
     @RequestMapping("/editUserList")
-    public String editUserList(Long id , Model model) {
-        User u = new User();
-        u.setId(id);
-        model.addAttribute(id);
-        return "edituser";
+    @ResponseBody
+    public Object editUserList(User user) {
+        return userService.selectById(user.getId());
     }
-
-    @RequestMapping("/temp")
-    public String temp (Model model, Page<User> page){
-            page = userService.getPageByParam(page,new User());
-            model.addAttribute("page", page);
-        return "temp";
-    }
-
 
 //    @RequestMapping("/toTestPage")
 //    public String toTestPage(User u , Model model){
