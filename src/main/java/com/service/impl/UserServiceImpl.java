@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User param) {
-        return userDao.update(param);
+    public int update(User param) {
+        return userDao.updateSelective(param);
     }
 
     @Override

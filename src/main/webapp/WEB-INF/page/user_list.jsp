@@ -34,7 +34,7 @@
                 dataType: "json",
                 success: function () {
                     window.location.reload()
-                },
+                }
             }
             $.ajax(ajax)
         }
@@ -53,66 +53,50 @@
             $.ajax(ajax)
         }
 
-            function addUser(){
-                var ajax = {
-                    url: "${pageContext.request.contextPath}/user/addUser",
-                    data:$('#saveForm').serializeArray(),
-                    type:"post",
-                    dataType:"json",
-                    success: function (data) {
-                        window.location.reload()
-                    }
-                }
-                $.ajax(ajax)
-            }
-
-            function editPage(id) {
-                console.log(id);
-                var ajax = {
-                    url: "${pageContext.request.contextPath}/user/editUserList",
-                    data:{
-                        "id":id
-                    },
-                    type:"post",
-                    dataType:"json",
-                    success:function (res) {
-                        $("input[name='realName']").val(res.realName);
-                        $("input[name='loginName']").val(res.loginName);
-                        $("input[name='grade']").val(res.grade);
-                        $("input[name='classNum']").val(res.classNum);
-                        $("input[name='age']").val(res.age);
-                        $("input[name='sex']").val(res.sex);
-                    }
-                }
-                $.ajax(ajax)
-            }
-
-        function edit() {
-            var id = $('.userid').val;
-            var loginName = $('.loginName').val;
-            var grade = $('.grade').val;
-            var classNum = $('.classNum').val;
-            var realName = $('.realName').val;
-            var age = $('.age').val;
-            var sex = $('.sex').val;
-
+        function addUser() {
             var ajax = {
-                contentType: "application/json;charset=UTF-8",
-                url: "${pageContext.request.contextPath}/user/editUser",
+                url: "${pageContext.request.contextPath}/user/addUser",
+                data: $('#saveForm').serializeArray(),
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+                    window.location.reload()
+                }
+            }
+            $.ajax(ajax)
+        }
+
+        function editPage(id) {
+            console.log(id);
+            var ajax = {
+                url: "${pageContext.request.contextPath}/user/editUserList",
                 data: {
-                    "id":id,
-                    "loginName":loginName,
-                    "grade":grade,
-                    "classNum":classNum,
-                    "realName":realName,
-                    "age":age,
-                    "sex":sex
+                    "id": id
                 },
                 type: "post",
                 dataType: "json",
-                success: function () {
+                success: function (res) {
+                    $("input[name='id']").val(res.id);
+                    $("input[name='realName']").val(res.realName);
+                    $("input[name='loginName']").val(res.loginName);
+                    $("input[name='grade']").val(res.grade);
+                    $("input[name='classNum']").val(res.classNum);
+                    $("input[name='age']").val(res.age);
+                    $("input[name='sex']").val(res.sex);
+                }
+            }
+            $.ajax(ajax)
+        }
 
-                },
+        function edit() {
+            var ajax = {
+                url: "${pageContext.request.contextPath}/user/editUser",
+                data: $('#saveForm1').serializeArray(),
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+                    window.location.reload()
+                }
             }
             $.ajax(ajax)
         }
@@ -289,57 +273,59 @@
 <!--修改页面-->
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel1">修改</h4>
-            </div>
-            <div class="modal-body">
-                <div class="table-responsive">
-                    <form id="saveForm1">
-                        <table class="table table-striped">
-                                <tr>
-                                    <td>昵称</td>
-                                    <td><input name="loginName" type="text" class="loginName"/></td>
-                                </tr>
-                                <tr>
-                                    <td>年级</td>
-                                    <td><input name="grade" type="text" class="grade"/></td>
-                                </tr>
-                                <tr>
-                                    <td>班级</td>
-                                    <td><input name="classNum" type="text" class="classNum"/></td>
-                                </tr>
-                                <tr>
-                                    <td>姓名</td>
-                                    <td><input name="realName" type="text" class="realName"/></td>
-                                </tr>
-                                <tr>
-                                    <td>年龄</td>
-                                    <td><input name="age" type="text" class="age"/></td>
-                                </tr>
-                                <tr>
-                                    <td>性别</td>
-                                    <td><input name="sex" type="text" class="sex"/></td>
-                                </tr>
-                        </table>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" onclick="edit()">提交</button>
-            </div>
-        </div><!-- /.modal-content -->
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel1">修改</h4>
 </div>
+<div class="modal-body">
+    <div class="table-responsive">
+        <form id="saveForm1">
+            <table class="table table-striped">
+                <!--id-->
+                <input type="hidden" name="id"/>
+                <tr>
+                    <td>昵称</td>
+                    <td><input name="loginName" type="text" class="loginName"/></td>
+                </tr>
+                <tr>
+                    <td>年级</td>
+                    <td><input name="grade" type="text" class="grade"/></td>
+                </tr>
+                <tr>
+                    <td>班级</td>
+                    <td><input name="classNum" type="text" class="classNum"/></td>
+                </tr>
+                <tr>
+                    <td>姓名</td>
+                    <td><input name="realName" type="text" class="realName"/></td>
+                </tr>
+                <tr>
+                    <td>年龄</td>
+                    <td><input name="age" type="text" class="age"/></td>
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    <td><input name="sex" type="text" class="sex"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    <button type="button" class="btn btn-primary" onclick="edit()">提交</button>
+    </div>
+    </div><!-- /.modal-content -->
+    </div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+    </html>

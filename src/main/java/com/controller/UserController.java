@@ -46,11 +46,12 @@ public class UserController {
     @RequestMapping("/editUser")
     @ResponseBody
     public Object editUser(User user) {
-        return userService.update(user);
+        userService.update(user);
+        return user;
     }
 
     @RequestMapping("/addUserList")
-    public String addUserList() {
+    public String addUserList() { 
         return "adduser";
     }
 

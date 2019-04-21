@@ -43,16 +43,28 @@
         VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
     </insert>
 
-    <update id="update" parameterType="com.pojo.User">
+    <update id="updateSelective" parameterType="com.pojo.User">
         UPDATE t_sys_user
-          <set>
-              <if test="loginName!=null">login_name = #{loginName},</if>
-              <if test="classNum!=null">class_num = #{classNum},</if>
-              <if test="realName!=null">real_name = #{realName},</if>
-              <if test="age!=null">age = #{age},</if>
-              <if test="sex!=null">sex = #{sex},</if>
-              <if test="grade!=null">grade = #{grade}</if>
-          </set>
+        <set>
+            <if test="loginName!=null">
+                login_name = #{loginName},
+            </if>
+            <if test="classNum!=null">
+                class_num = #{classNum},
+            </if>
+            <if test="realName!=null">
+                real_name = #{realName},
+            </if>
+            <if test="age!=null">
+                age = #{age},
+            </if>
+            <if test="sex!=null">
+                sex = #{sex},
+            </if>
+            <if test="grade!=null">
+                grade = #{grade},
+            </if>
+        </set>
         WHERE id = #{id}
     </update>
 
