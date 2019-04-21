@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TeacherDao">
+    <resultMap type="Teacher" id="userResultMap">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="loginName" column="login_name" jdbcType="VARCHAR"/>
+        <result property="classNum" column="class_num" jdbcType="INTEGER"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="grade" column="grade" jdbcType="VARCHAR"/>
+        <result property="project" column="project" jdbcType="VARCHAR"/>
+        <result property="rank" column="rank" jdbcType="INTEGER"/>
+        <result property="unit" column="unit" jdbcType="VARCHAR"/>
+        <result property="isLeader" column="isLeader" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="select">
+      SELECT * FROM t_sys_teacher
+    </sql>
+
+    <select id="selectByParam" resultMap="userResultMap">
+        <include refid="select"/>
+    </select>
+
+    <select id="selectById" resultMap="userResultMap">
+        <include refid="select"/>
+        where id=#{id}
+    </select>
+
+    <select id="pageList" resultMap="userResultMap">
+        <include refid="select"/>
+        limit #{offset},#{size}
+    </select>
+
+    <select id="pageTotal" resultType="java.lang.Integer">
+        select count(*) from t_sys_teacher
+    </select>
+
+    <select id="getById" resultMap="userResultMap">
+      select * form t_sys_teacher WHERE id = #{id}
+    </select>
+
+    <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id">
+        INSERT into t_sys_teacher (login_name,class_num,real_name,age,sex,grade)
+        VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
+    </insert>
+
+    <update id="updateSelective" parameterType="com.pojo.Teacher">
+        UPDATE t_sys_teacher
+        <set>
+            <if test="loginName!=null">
+                login_name = #{loginName},
+            </if>
+            <if test="classNum!=null">
+                class_num = #{classNum},
+            </if>
+            <if test="realName!=null">
+                real_name = #{realName},
+            </if>
+            <if test="age!=null">
+                age = #{age},
+            </if>
+            <if test="sex!=null">
+                sex = #{sex},
+            </if>
+            <if test="grade!=null">
+                grade = #{grade},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

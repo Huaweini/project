@@ -134,8 +134,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="margin-top: 80px;background-color: #b3b4b524">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">学生管理 <span class="sr-only">(current)</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">教师管理</a></li>
                 <li><a href="#">正在开发……</a></li>
                 <li><a href="#">正在开发……</a></li>
             </ul>
@@ -275,51 +275,51 @@
 <!--修改页面-->
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title" id="myModalLabel1">修改</h4>
-</div>
-<div class="modal-body">
-    <div class="table-responsive">
-        <form id="saveForm1">
-            <table class="table table-striped">
-                <!--id-->
-                <input type="hidden" name="id"/>
-                <tr>
-                    <td>昵称</td>
-                    <td><input name="loginName" type="text" class="loginName"/></td>
-                </tr>
-                <tr>
-                    <td>年级</td>
-                    <td><input name="grade" type="text" class="grade"/></td>
-                </tr>
-                <tr>
-                    <td>班级</td>
-                    <td><input name="classNum" type="text" class="classNum"/></td>
-                </tr>
-                <tr>
-                    <td>姓名</td>
-                    <td><input name="realName" type="text" class="realName"/></td>
-                </tr>
-                <tr>
-                    <td>年龄</td>
-                    <td><input name="age" type="text" class="age"/></td>
-                </tr>
-                <tr>
-                    <td>性别</td>
-                    <td><input name="sex" type="text" class="sex"/></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-    <button type="button" class="btn btn-primary" onclick="edit()">提交</button>
-    </div>
-    </div><!-- /.modal-content -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel1">修改</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <form id="saveForm1">
+                        <table class="table table-striped">
+                            <!--id-->
+                            <input type="hidden" name="id"/>
+                            <tr>
+                                <td>昵称</td>
+                                <td><input name="loginName" type="text" class="loginName"/></td>
+                            </tr>
+                            <tr>
+                                <td>年级</td>
+                                <td><input name="grade" type="text" class="grade"/></td>
+                            </tr>
+                            <tr>
+                                <td>班级</td>
+                                <td><input name="classNum" type="text" class="classNum"/></td>
+                            </tr>
+                            <tr>
+                                <td>姓名</td>
+                                <td><input name="realName" type="text" class="realName"/></td>
+                            </tr>
+                            <tr>
+                                <td>年龄</td>
+                                <td><input name="age" type="text" class="age"/></td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td><input name="sex" type="text" class="sex"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="edit()">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
     </div>
 
 
@@ -329,5 +329,5 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
-    </html>
+</body>
+</html>

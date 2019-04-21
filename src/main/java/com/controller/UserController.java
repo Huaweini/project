@@ -2,7 +2,9 @@ package com.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Page;
+import com.pojo.Teacher;
 import com.pojo.User;
+import com.service.TeacherService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private TeacherService teacherService;
+    //学生管理
     @RequestMapping("/page")
     public String list(Model model, Page<User> page) {
         page = userService.getPageByParam(page,new User());
@@ -61,21 +65,17 @@ public class UserController {
         return userService.selectById(user.getId());
     }
 
-//    @RequestMapping("/toTestPage")
-//    public String toTestPage(User u , Model model){
-//        for (int i=0;i<=50;i++){
-//            String str = Long.toString(new Date().getTime());
-//            u.setLoginName(Long.toString(new Date().getTime()));
-//            u.setPassword("123456");
-//            u.setRealName("华为倪"+str.substring(str.length()-4,str.length()));
-//            u.setGroupId(12);
-//            userService.insert(u);
-//        }
-//
-//        List<User> list = userService.selectList(new User());
-//        model.addAttribute("list", list);
-//        return "test_list";
-//    }
+    //教师管理
 
+    @RequestMapping("/teacherList")
+    public String teacherList(){
+        return "teacher_list";
+    }
+
+    @RequestMapping("/teacherPage")
+    public String teacherPage(){
+        teacherService.selectList();
+        return "teacher_list";
+    }
 
 }
