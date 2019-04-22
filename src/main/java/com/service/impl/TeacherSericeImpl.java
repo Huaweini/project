@@ -17,5 +17,15 @@ public class TeacherSericeImpl implements TeacherService {
     public List<Teacher> selectList() {
         return teacherDao.selectByParam(null);
     }
+
+    @Override
+    public int insert(Teacher param) {
+        return teacherDao.insertSelective(param);
+    }
+
+    @Override
+    public Teacher selectById(Long id) {
+        return teacherDao.selectById(id);
+    }
 }
 

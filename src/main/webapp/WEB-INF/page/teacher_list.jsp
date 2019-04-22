@@ -21,9 +21,9 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
-        var page = ${page.page};//当前页
-        var size = ${page.size};//每页显示的条数
-        var total = ${page.total};//数据总条数
+        var page = '${page.page}';//当前页
+        var size = '${page.size}';//每页显示的条数
+        var total = '${page.total}';//数据总条数
 
         function lastpage() {
             var ajax = {
@@ -53,9 +53,9 @@
             $.ajax(ajax)
         }
 
-        function addUser() {
+        function addTeacher() {
             var ajax = {
-                url: "${pageContext.request.contextPath}/user/addUser",
+                url: "${pageContext.request.contextPath}/user/addTeacher",
                 data: $('#saveForm').serializeArray(),
                 type: "post",
                 dataType: "json",
@@ -70,7 +70,7 @@
         function editPage(id) {
             console.log(id);
             var ajax = {
-                url: "${pageContext.request.contextPath}/user/editUserList",
+                url: "${pageContext.request.contextPath}/user/editTeacherList",
                 data: {
                     "id": id
                 },
@@ -84,6 +84,9 @@
                     $("input[name='classNum']").val(res.classNum);
                     $("input[name='age']").val(res.age);
                     $("input[name='sex']").val(res.sex);
+                    $("input[name='project']").val(res.project);
+                    $("input[name='rank']").val(res.rank);
+                    $("input[name='unit']").val(res.unit);
                 }
             }
             $.ajax(ajax)
@@ -204,7 +207,7 @@
                             <td>${teacher.unit}</td>
                             <td>
                                 <!-- 按钮触发模态框 -->
-                                <button type="button" class="btn btn-default" onclick="editPage(${user.id})"
+                                <button type="button" class="btn btn-default" onclick="editPage(${teacher.id})"
                                         data-toggle="modal" data-target="#myModal1">修改
                                 </button>
                             </td>
@@ -288,7 +291,12 @@
                             </tr>
                             <tr>
                                 <td>职位</td>
-                                <td><input name="rank" type="text"/></td>
+                                <td>
+                                    <input name="rank" type="text" placeholder="请输入数字"/>
+                                    <div>
+                                        <span>1-校长,2-副校长,3-主任,4-班主任,5-老师</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>部门</td>
@@ -300,7 +308,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" onclick="addUser()">提交</button>
+                <button type="button" class="btn btn-primary" onclick="addTeacher()">提交</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
@@ -323,39 +331,44 @@
                             <input type="hidden" name="id"/>
                             <tr>
                                 <td>昵称</td>
-                                <td><input name="loginName" type="text" class="loginName"/></td>
+                                <td><input name="loginName" type="text" class="loginName" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>年级</td>
-                                <td><input name="grade" type="text" class="grade"/></td>
+                                <td><input name="grade" type="text" class="grade" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>班级</td>
-                                <td><input name="classNum" type="text" class="classNum"/></td>
+                                <td><input name="classNum" type="text" class="classNum" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>姓名</td>
-                                <td><input name="realName" type="text" class="realName"/></td>
+                                <td><input name="realName" type="text" class="realName" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>年龄</td>
-                                <td><input name="age" type="text" class="age"/></td>
+                                <td><input name="age" type="text" class="age" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>性别</td>
-                                <td><input name="sex" type="text" class="sex"/></td>
+                                <td><input name="sex" type="text" class="sex" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>科目</td>
-                                <td><input name="project" type="text" class="project"/></td>
+                                <td><input name="project" type="text" class="project" placeholder="无"/></td>
                             </tr>
                             <tr>
                                 <td>职位</td>
-                                <td><input name="rank" type="text" class="rank"/></td>
+                                <td>
+                                    <input name="rank" type="text" class="rank" placeholder="无"/>
+                                    <div>
+                                        <span>1-校长,2-副校长,3-主任,4-班主任,5-老师</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>部门</td>
-                                <td><input name="unit" type="text" class="unit"/></td>
+                                <td><input name="unit" type="text" class="unit" placeholder="无"/></td>
                             </tr>
                         </table>
                     </form>

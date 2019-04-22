@@ -7,4 +7,8 @@ import java.util.List;
 public interface TeacherService {
     List<Teacher> selectList();
 
+    int insert(Teacher param);
+
+    Teacher selectById(Long id);
+
 }

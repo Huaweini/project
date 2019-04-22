@@ -44,8 +44,8 @@
     </select>
 
     <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id">
-        INSERT into t_sys_teacher (login_name,class_num,real_name,age,sex,grade)
-        VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
+        INSERT into t_sys_teacher (login_name,class_num,real_name,age,sex,grade,project,rank,unit,isLeader)
+        VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade},#{project},#{rank},#{unit},#{isLeader});
     </insert>
 
     <update id="updateSelective" parameterType="com.pojo.Teacher">

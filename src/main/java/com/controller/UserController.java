@@ -55,11 +55,6 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping("/addUserList")
-    public String addUserList() { 
-        return "adduser";
-    }
-
     @RequestMapping("/editUserList")
     @ResponseBody
     public Object editUserList(User user) {
@@ -79,5 +74,19 @@ public class UserController {
         model.addAttribute("list",list);
         return "teacher_list";
     }
+
+    @RequestMapping("/addTeacher")
+    @ResponseBody
+    public Object addTeacher(Teacher teacher) {
+        teacherService.insert(teacher);
+        return teacher;
+    }
+
+    @RequestMapping("/editTeacherList")
+    @ResponseBody
+    public Object editTeacherList(Teacher teacher) {
+        return teacherService.selectById(teacher.getId());
+    }
+
 
 }
