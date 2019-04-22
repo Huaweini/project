@@ -22,6 +22,7 @@
 
     <select id="selectByParam" resultMap="userResultMap">
         <include refid="select"/>
+        ORDER by rank
     </select>
 
     <select id="selectById" resultMap="userResultMap">

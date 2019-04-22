@@ -17,7 +17,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>学生管理系统</title>
+    <title>教师管理系统</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
@@ -117,7 +117,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">学生管理系统</a>
+            <a class="navbar-brand" href="#">教师管理系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -153,7 +153,7 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
-            <h2 class="sub-header">学生管理</h2>
+            <h2 class="sub-header">教师管理</h2>
             <div>
                 <!-- 按钮触发模态框 -->
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">新增</button>
@@ -168,18 +168,40 @@
                         <th>姓名</th>
                         <th>年龄</th>
                         <th>性别</th>
+                        <th>科目</th>
+                        <th>职位</th>
+                        <th>部门</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="user" items="${page.res}" varStatus="status">
+                    <c:forEach var="teacher" items="${list}" varStatus="status">
                         <tr>
-                            <td>${user.loginName}</td>
-                            <td>${user.grade}</td>
-                            <td>${user.classNum}</td>
-                            <td>${user.realName}</td>
-                            <td>${user.age}</td>
-                            <td>${user.sex}</td>
+                            <td>${teacher.loginName}</td>
+                            <td>${teacher.grade}</td>
+                            <td>${teacher.classNum}</td>
+                            <td>${teacher.realName}</td>
+                            <td>${teacher.age}</td>
+                            <td>${teacher.sex}</td>
+                            <td>${teacher.project}</td>
+                            <td>
+                                <c:if test="${teacher.rank == 1}">
+                                    <span>校长</span>
+                                </c:if>
+                                <c:if test="${teacher.rank == 2}">
+                                    <span>副校长</span>
+                                </c:if>
+                                <c:if test="${teacher.rank == 3}">
+                                    <span>主任</span>
+                                </c:if>
+                                <c:if test="${teacher.rank == 4}">
+                                    <span>班主任</span>
+                                </c:if>
+                                <c:if test="${teacher.rank == 5}">
+                                    <span>老师</span>
+                                </c:if>
+                            </td>
+                            <td>${teacher.unit}</td>
                             <td>
                                 <!-- 按钮触发模态框 -->
                                 <button type="button" class="btn btn-default" onclick="editPage(${user.id})"
@@ -260,6 +282,18 @@
                                 <td>性别</td>
                                 <td><input name="sex" type="text"/></td>
                             </tr>
+                            <tr>
+                                <td>科目</td>
+                                <td><input name="project" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>职位</td>
+                                <td><input name="rank" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>部门</td>
+                                <td><input name="unit" type="text"/></td>
+                            </tr>
                         </table>
                     </form>
                 </div>
@@ -310,6 +344,18 @@
                             <tr>
                                 <td>性别</td>
                                 <td><input name="sex" type="text" class="sex"/></td>
+                            </tr>
+                            <tr>
+                                <td>科目</td>
+                                <td><input name="project" type="text" class="project"/></td>
+                            </tr>
+                            <tr>
+                                <td>职位</td>
+                                <td><input name="rank" type="text" class="rank"/></td>
+                            </tr>
+                            <tr>
+                                <td>部门</td>
+                                <td><input name="unit" type="text" class="unit"/></td>
                             </tr>
                         </table>
                     </form>

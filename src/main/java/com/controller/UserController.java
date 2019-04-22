@@ -24,6 +24,7 @@ public class UserController {
     private UserService userService;
     @Autowired
     private TeacherService teacherService;
+
     //学生管理
     @RequestMapping("/page")
     public String list(Model model, Page<User> page) {
@@ -73,8 +74,9 @@ public class UserController {
     }
 
     @RequestMapping("/teacherPage")
-    public String teacherPage(){
-        teacherService.selectList();
+    public String teacherPage(Model model){
+        List list = teacherService.selectList();
+        model.addAttribute("list",list);
         return "teacher_list";
     }
 
