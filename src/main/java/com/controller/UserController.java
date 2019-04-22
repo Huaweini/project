@@ -61,6 +61,11 @@ public class UserController {
         return userService.selectById(user.getId());
     }
 
+    @RequestMapping("/delUser")
+    @ResponseBody
+    public Object delUser(User user) {
+        return userService.del(user.getId());
+    }
     //教师管理
 
     @RequestMapping("/teacherList")
@@ -85,6 +90,12 @@ public class UserController {
     @RequestMapping("/editTeacherList")
     @ResponseBody
     public Object editTeacherList(Teacher teacher) {
+        return teacherService.selectById(teacher.getId());
+    }
+
+    @RequestMapping("/delTeacher")
+    @ResponseBody
+    public Object delTeacher(Teacher teacher) {
         return teacherService.selectById(teacher.getId());
     }
 

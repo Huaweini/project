@@ -27,6 +27,7 @@
 
     <select id="pageList" resultMap="userResultMap">
         <include refid="select"/>
+        where isDel = 0
         limit #{offset},#{size}
     </select>
 
@@ -65,6 +66,12 @@
                 grade = #{grade},
             </if>
         </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="delById" parameterType="com.pojo.User">
+        UPDATE t_sys_user
+        SET  isDel = 1
         WHERE id = #{id}
     </update>
 

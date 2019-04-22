@@ -156,7 +156,7 @@
             <h2 class="sub-header">学生管理</h2>
             <div>
                 <!-- 按钮触发模态框 -->
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">新增</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -182,8 +182,10 @@
                             <td>${user.sex}</td>
                             <td>
                                 <!-- 按钮触发模态框 -->
-                                <button type="button" class="btn btn-default" onclick="editPage(${user.id})"
+                                <button type="button" class="btn btn-info" onclick="editPage(${user.id})"
                                         data-toggle="modal" data-target="#myModal1">修改
+                                </button>
+                                <button type="button" class="btn btn-danger" onclick="del(${user.id})">删除
                                 </button>
                             </td>
                         </tr>

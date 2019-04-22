@@ -67,8 +67,24 @@
             $.ajax(ajax)
         }
 
+        function del(id) {
+            window.alert("确认删除？")
+            var ajax = {
+                url: "${pageContext.request.contextPath}/user/delUser",
+                data: {
+                    "id": id
+                },
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+                    window.alert('删除成功:)')
+                    window.location.reload()
+                }
+            }
+            $.ajax(ajax)
+        }
+
         function editPage(id) {
-            console.log(id);
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/editTeacherList",
                 data: {
@@ -159,7 +175,7 @@
             <h2 class="sub-header">教师管理</h2>
             <div>
                 <!-- 按钮触发模态框 -->
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">新增</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -207,8 +223,10 @@
                             <td>${teacher.unit}</td>
                             <td>
                                 <!-- 按钮触发模态框 -->
-                                <button type="button" class="btn btn-default" onclick="editPage(${teacher.id})"
+                                <button type="button" class="btn btn-info" onclick="editPage(${teacher.id})"
                                         data-toggle="modal" data-target="#myModal1">修改
+                                </button>
+                                <button type="button" class="btn btn-danger" onclick="del(${teacher.id})">删除
                                 </button>
                             </td>
                         </tr>

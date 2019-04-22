@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
         return userDao.selectById(id);
     }
 
+    @Override
+    public int del(Long id) {
+        return userDao.del(id);
+    }
+
 }

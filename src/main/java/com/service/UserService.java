@@ -16,4 +16,6 @@ public interface UserService {
 
     User selectById(Long id);
 
+    int del (Long id);
+
 }

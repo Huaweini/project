@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserDao extends BaseDataDao<User> {
     User selectById(Long id);
 
+    int del (Long id);
 }
