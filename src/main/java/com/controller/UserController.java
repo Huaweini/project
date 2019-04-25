@@ -96,7 +96,7 @@ public class UserController {
     @RequestMapping("/delTeacher")
     @ResponseBody
     public Object delTeacher(Teacher teacher) {
-        return teacherService.selectById(teacher.getId());
+        return teacherService.del(teacher.getId());
     }
 
 

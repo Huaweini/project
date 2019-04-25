@@ -27,5 +27,10 @@ public class TeacherSericeImpl implements TeacherService {
     public Teacher selectById(Long id) {
         return teacherDao.selectById(id);
     }
+
+    @Override
+    public int del(Long id) {
+        return teacherDao.del(id);
+    }
 }
 

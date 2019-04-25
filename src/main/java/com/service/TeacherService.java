@@ -11,4 +11,6 @@ public interface TeacherService {
 
     Teacher selectById(Long id);
 
+    int del(Long id);
+
 }

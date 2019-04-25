@@ -69,7 +69,7 @@
         WHERE id = #{id}
     </update>
 
-    <update id="delById" parameterType="com.pojo.User">
+    <update id="del" parameterType="com.pojo.User">
         UPDATE t_sys_user
         SET  isDel = 1
         WHERE id = #{id}

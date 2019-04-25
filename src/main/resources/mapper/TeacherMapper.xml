@@ -22,6 +22,7 @@
 
     <select id="selectByParam" resultMap="userResultMap">
         <include refid="select"/>
+        WHERE isDel = 0
         ORDER by rank
     </select>
 
@@ -70,6 +71,12 @@
                 grade = #{grade},
             </if>
         </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="del" parameterType="com.pojo.Teacher">
+        UPDATE t_sys_teacher
+        SET  isDel = 1
         WHERE id = #{id}
     </update>
 
