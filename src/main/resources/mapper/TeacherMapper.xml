@@ -70,6 +70,18 @@
             <if test="grade!=null">
                 grade = #{grade},
             </if>
+            <if test="project!=null">
+                project = #{project},
+            </if>
+            <if test="rank!=null">
+                rank = #{rank},
+            </if>
+            <if test="unit!=null">
+                unit = #{unit},
+            </if>
+            <if test="isLeader!=null">
+                isLeader = #{isLeader},
+            </if>
         </set>
         WHERE id = #{id}
     </update>

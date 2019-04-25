@@ -93,6 +93,13 @@ public class UserController {
         return teacherService.selectById(teacher.getId());
     }
 
+    @RequestMapping("/editTeacher")
+    @ResponseBody
+    public Object editTeacher(Teacher teacher) {
+        teacherService.update(teacher);
+        return teacher;
+    }
+
     @RequestMapping("/delTeacher")
     @ResponseBody
     public Object delTeacher(Teacher teacher) {

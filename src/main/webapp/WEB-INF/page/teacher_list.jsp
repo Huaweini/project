@@ -110,7 +110,7 @@
 
         function edit() {
             var ajax = {
-                url: "${pageContext.request.contextPath}/user/editUser",
+                url: "${pageContext.request.contextPath}/user/editTeacher",
                 data: $('#saveForm1').serializeArray(),
                 type: "post",
                 dataType: "json",

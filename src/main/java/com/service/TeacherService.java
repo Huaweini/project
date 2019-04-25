@@ -13,4 +13,6 @@ public interface TeacherService {
 
     int del(Long id);
 
+    int update(Teacher teacher);
+
 }
