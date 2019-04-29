@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
     protected UserDao userDao;
 
     @Override
-    public List<User> selectList(User param) {
-        return userDao.selectByParam(param);
+    public List<User> selectList() {
+        return userDao.selectByParam(null);
     }
 
     @Override

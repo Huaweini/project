@@ -30,9 +30,13 @@ public class UserController {
 
     //学生管理
     @RequestMapping("/page")
-    public String list(Model model, Page<User> page) {
-        page = userService.getPageByParam(page,new User());
-        model.addAttribute("page", page);
+    public String list(Model model, @RequestParam(value = "pn", defaultValue = "1") Integer pn) {
+        //在查询之前需要调用，传入页码，以及每页的大小
+        PageHelper.startPage(pn, 10);
+        List list = userService.selectList();
+        //查询出来的数据，和连续显示的页数
+        PageInfo page = new PageInfo(list, 5);
+        model.addAttribute("page",page);
         return "user_list";
     }
 

@@ -6,7 +6,7 @@ import com.pojo.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> selectList(User param);
+    List<User> selectList();
 
     int insert(User param);
 
