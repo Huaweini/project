@@ -1,6 +1,8 @@
 package com.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pojo.Page;
 import com.pojo.Teacher;
 import com.pojo.User;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
@@ -74,9 +77,13 @@ public class UserController {
     }
 
     @RequestMapping("/teacherPage")
-    public String teacherPage(Model model){
+    public String teacherPage(Model model, @RequestParam(value = "pn", defaultValue = "1") Integer pn){
+        //在查询之前需要调用，传入页码，以及每页的大小
+        PageHelper.startPage(pn, 10);
         List list = teacherService.selectList();
-        model.addAttribute("list",list);
+        //查询出来的数据，和连续显示的页数
+        PageInfo page = new PageInfo(list, 5);
+        model.addAttribute("page",page);
         return "teacher_list";
     }
 

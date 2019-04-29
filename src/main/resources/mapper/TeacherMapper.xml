@@ -10,11 +10,12 @@
         <result property="realName" column="real_name" jdbcType="VARCHAR"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="sex" column="sex" jdbcType="VARCHAR"/>
-        <result property="grade" column="grade" jdbcType="VARCHAR"/>
+        <result property="grade" column="grade" jdbcType="INTEGER"/>
         <result property="project" column="project" jdbcType="VARCHAR"/>
         <result property="rank" column="rank" jdbcType="INTEGER"/>
         <result property="unit" column="unit" jdbcType="VARCHAR"/>
         <result property="isLeader" column="isLeader" jdbcType="VARCHAR"/>
+        <result property="isDel" column="isDel" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="select">
       SELECT * FROM t_sys_teacher
@@ -44,9 +45,78 @@
       select * form t_sys_teacher WHERE id = #{id}
     </select>
 
-    <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id">
-        INSERT into t_sys_teacher (login_name,class_num,real_name,age,sex,grade,project,rank,unit,isLeader)
-        VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade},#{project},#{rank},#{unit},#{isLeader});
+    <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id" flushCache="true">
+        INSERT into t_sys_teacher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="loginName != null">
+                login_name,
+            </if>
+            <if test="classNum != null">
+                class_num,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="grade != null and grade != '' ">
+                grade,
+            </if>
+            <if test="project != null">
+                project,
+            </if>
+            <if test="rank != null">
+                rank,
+            </if>
+            <if test="unit != null">
+                unit,
+            </if>
+            <if test="isLeader != null">
+                isLeader,
+            </if>
+            <if test="isDel != null">
+                isDel,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="loginName != null">
+                #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="classNum != null">
+                #{classNum,jdbcType=INTEGER},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null and grade != '' ">
+                #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="project != null">
+                #{project,jdbcType=VARCHAR},
+            </if>
+            <if test="rank != null">
+                #{rank,jdbcType=INTEGER},
+            </if>
+            <if test="unit != null">
+                #{unit,jdbcType=VARCHAR},
+            </if>
+            <if test="isLeader != null">
+                #{isLeader,jdbcType=VARCHAR},
+            </if>
+            <if test="isDel != null">
+                #{isDel,jdbcType=INTEGER},
+            </if>
+        </trim>
     </insert>
 
     <update id="updateSelective" parameterType="com.pojo.Teacher">

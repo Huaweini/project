@@ -108,7 +108,6 @@
         })
 
         function del(id) {
-            window.alert("确认删除？")
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/delUser",
                 data: {
@@ -117,7 +116,6 @@
                 type: "post",
                 dataType: "json",
                 success: function (res) {
-                    window.alert('删除成功:)')
                     window.location.reload()
                 }
             }
@@ -208,10 +206,28 @@
                                         data-toggle="modal" data-target="#myModal1">修改
                                 </button>
                                 <button type="button" class="btn btn-danger"
-                                        data-toggle="modal" data-target="#myModal2" onclick="del(${user.id})">删除
+                                        data-toggle="modal" data-target="#myModal2">删除
                                 </button>
                             </td>
                         </tr>
+                        <!--确认删除弹窗-->
+                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 300px;margin-top: 300px;margin-left: 200px;">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-danger" onclick="del(${user.id})">确认删除</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </c:forEach>
                     </tbody>
                 </table>
@@ -347,24 +363,7 @@
         </div><!-- /.modal-content -->
     </div>
 </div>
-<!--确认删除弹窗-->
-<%--<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"--%>
-     <%--aria-hidden="true">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content" style="width: 300px;margin-top: 300px;margin-left: 200px;">--%>
-            <%--<div class="modal-header">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
-                <%--<h4 class="modal-title" id="myModalLabel2">确认删除？</h4>--%>
-            <%--</div>--%>
-            <%--<div class="modal-body">--%>
-                <%--<div class="modal-footer">--%>
-                    <%--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--%>
-                    <%--<button type="button" class="btn btn-danger" onclick="del()">确认删除</button>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
