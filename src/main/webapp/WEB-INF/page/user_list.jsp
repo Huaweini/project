@@ -216,9 +216,9 @@
                 <div class="col-md-6">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                            <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=1">首页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/page?pn=1">首页</a></li>
                             <c:if test="${page.hasPreviousPage }">
-                                <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page.pageNum-1}"
+                                <li><a href="${pageContext.request.contextPath}/user/page?pn=${page.pageNum-1}"
                                        aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                                 </a></li>
                             </c:if>
@@ -229,17 +229,17 @@
                                 </c:if>
                                 <c:if test="${page_Num != page.pageNum }">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page_Num }">${page_Num }</a>
+                                        <a href="${pageContext.request.contextPath}/user/page?pn=${page_Num }">${page_Num }</a>
                                     </li>
                                 </c:if>
 
                             </c:forEach>
                             <c:if test="${page.hasNextPage }">
-                                <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page.pageNum+1 }"
+                                <li><a href="${pageContext.request.contextPath}/user/page?pn=${page.pageNum+1 }"
                                        aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                                 </a></li>
                             </c:if>
-                            <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page.pages}">末页</a>
+                            <li><a href="${pageContext.request.contextPath}/user/page?pn=${page.pages}">末页</a>
                             </li>
                         </ul>
                     </nav>
