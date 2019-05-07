@@ -70,11 +70,6 @@
             $.ajax(ajax)
         }
 
-        //删除页面使用
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        })
-
         function del(id) {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/delUser",
