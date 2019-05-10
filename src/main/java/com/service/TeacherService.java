@@ -15,7 +15,7 @@ public interface TeacherService {
 
     int update(Teacher teacher);
 
-    Teacher searchTeacher(String keyWord);
+    Teacher searchTeacher(String keyword);
 
 
 }

@@ -47,7 +47,7 @@
 
     <select id="searchTeacher" resultMap="userResultMap">
         select * from t_sys_teacher
-        where concat(login_name,real_name,age,sex,project,rank,unit,grade,class_num) like CONCAT('%',#{keyWord},'%')
+        where concat(login_name,real_name,age,sex,project,rank,unit,grade,class_num) like CONCAT('%',#{keyword},'%')
     </select>
 
     <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id" flushCache="true">

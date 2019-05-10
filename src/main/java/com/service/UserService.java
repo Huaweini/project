@@ -1,16 +1,13 @@
 package com.service;
 
-import com.pojo.Page;
 import com.pojo.User;
 
 import java.util.List;
 
 public interface UserService {
-    List<User> selectList();
 
     int insert(User param);
 
-    Page<User> getPageByParam(Page<User> page, User param);
 
     int update(User param);
 
@@ -18,6 +15,6 @@ public interface UserService {
 
     int del (Long id);
 
-    User searchUser(String keyWord);
+    List<User>  searchUser(String keyword);
 
 }

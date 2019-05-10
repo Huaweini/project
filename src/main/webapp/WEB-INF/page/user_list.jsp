@@ -86,19 +86,8 @@
         }
 
         function searchUser() {
-            var keyWord = $(".form-control").val();
-            console.log(keyWord)
-            $.ajax({
-                url: "${pageContext.request.contextPath}/user/searchUser",
-                type: 'post',
-                dataType:'json',
-                data:{
-                    keyWord : keyWord
-                },
-                success : function (data) {
-
-                }
-            })
+            $("#pageNum").val(0);
+            $("#searchForm").submit();
         }
 
     </script>
@@ -151,79 +140,88 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
-            <h2 class="sub-header">学生管理</h2>
-            <div style="display:inline;">
-                <!-- 按钮触发模态框 -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
-            </div>
-            <div class="col-lg-6" style="display:inline; width: 96%; float: right;">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="value" style="width: 127px;" placeholder="输入关键字">
-                    <span class="input-group-btn" style="width: 1px">
-                        <button class="btn btn-default" type="button" onclick="searchUser()">查询</button>
-                    </span>
+            <div class="row">
+                <h2 class="sub-header">学生管理</h2>
+                <div class="col-sm-1">
+                    <!-- 按钮触发模态框 -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
+                </div>
+                <div class="col-sm-6">
+                    <form action="" method="post" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" value="${keyword}"
+                                   placeholder="输入关键字"/>
+                            <span class="input-group-btn" style="width: 1px">
+                                <button class="btn btn-default" type="button" onclick="searchUser()">查询</button>
+                                <input type="hidden" id="pageNum" name="pageNum" value="${page.pageNum}"/>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="table-responsive" style="margin-top: 10px;">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>昵称</th>
-                        <th>年级</th>
-                        <th>班级</th>
-                        <th>姓名</th>
-                        <th>年龄</th>
-                        <th>性别</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="user" items="${page.list}" varStatus="status">
+            <div class="row">
+                <div class="col-sm-9 table-responsive" style="margin-top: 10px;">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                            <input type="hidden" class="userId" value="${user.id}"/>
-                            <td>${user.loginName}</td>
-                            <td>${user.grade}</td>
-                            <td>${user.classNum}</td>
-                            <td>${user.realName}</td>
-                            <td>${user.age}</td>
-                            <td>${user.sex}</td>
-                            <td>
-                                <!-- 按钮触发模态框 -->
-                                <button type="button" class="btn btn-info" onclick="editPage(${user.id})"
-                                        data-toggle="modal" data-target="#myModal1">修改
-                                </button>
-                                <button type="button" class="btn btn-danger"
-                                        data-toggle="modal" data-target="#myModal2">删除
-                                </button>
-                            </td>
+                            <th>昵称</th>
+                            <th>年级</th>
+                            <th>班级</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>性别</th>
+                            <th>操作</th>
                         </tr>
-                        <!--确认删除弹窗-->
-                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-                             aria-labelledby="myModalLabel2"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="width: 300px;margin-top: 300px;margin-left: 200px;">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times;
-                                        </button>
-                                        <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </thead>
+                        <tbody>
+                        <c:forEach var="user" items="${page.list}" varStatus="status">
+                            <tr>
+                                <input type="hidden" class="userId" value="${user.id}"/>
+                                <td>${user.loginName}</td>
+                                <td>${user.grade}</td>
+                                <td>${user.classNum}</td>
+                                <td>${user.realName}</td>
+                                <td>${user.age}</td>
+                                <td>${user.sex}</td>
+                                <td>
+                                    <!-- 按钮触发模态框 -->
+                                    <button type="button" class="btn btn-info" onclick="editPage(${user.id})"
+                                            data-toggle="modal" data-target="#myModal1">修改
+                                    </button>
+                                    <button type="button" class="btn btn-danger"
+                                            data-toggle="modal" data-target="#myModal2">删除
+                                    </button>
+                                </td>
+                            </tr>
+                            <!--确认删除弹窗-->
+                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel2"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content"
+                                         style="width: 300px;margin-top: 300px;margin-left: 200px;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
                                             </button>
-                                            <button type="button" class="btn btn-danger" onclick="del(${user.id})">
-                                                确认删除
-                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                </button>
+                                                <button type="button" class="btn btn-danger" onclick="del(${user.id})">
+                                                    确认删除
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- 显示分页信息 -->
             <div class="row">
@@ -235,9 +233,9 @@
                 <div class="col-md-6">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                            <li><a href="${pageContext.request.contextPath}/user/page?pn=1">首页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/page?pageNum=1">首页</a></li>
                             <c:if test="${page.hasPreviousPage }">
-                                <li><a href="${pageContext.request.contextPath}/user/page?pn=${page.pageNum-1}"
+                                <li><a href="${pageContext.request.contextPath}/user/page?pageNum=${page.pageNum-1}"
                                        aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                                 </a></li>
                             </c:if>
@@ -248,17 +246,17 @@
                                 </c:if>
                                 <c:if test="${page_Num != page.pageNum }">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/user/page?pn=${page_Num }">${page_Num }</a>
+                                        <a href="${pageContext.request.contextPath}/user/page?pageNum=${page_Num }">${page_Num }</a>
                                     </li>
                                 </c:if>
 
                             </c:forEach>
                             <c:if test="${page.hasNextPage }">
-                                <li><a href="${pageContext.request.contextPath}/user/page?pn=${page.pageNum+1 }"
+                                <li><a href="${pageContext.request.contextPath}/user/page?pageNum=${page.pageNum+1 }"
                                        aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                                 </a></li>
                             </c:if>
-                            <li><a href="${pageContext.request.contextPath}/user/page?pn=${page.pages}">末页</a>
+                            <li><a href="${pageContext.request.contextPath}/user/page?pageNum=${page.pages}">末页</a>
                             </li>
                         </ul>
                     </nav>

@@ -120,14 +120,14 @@
         }
 
         function searchTeacher() {
-            var keyWord = $(".form-control").val();
-            console.log(keyWord)
+            var keyword = $(".form-control").val();
+            console.log(keyword)
             $.ajax({
                 url: "${pageContext.request.contextPath}/user/searchTeacher",
                 type: 'post',
                 dataType:'json',
                 data:{
-                    keyWord : keyWord
+                    keyword : keyword
                 },
                 success : function (data) {
 

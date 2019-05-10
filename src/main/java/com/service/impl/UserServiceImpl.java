@@ -1,7 +1,8 @@
 package com.service.impl;
 
 import com.dao.UserDao;
-import com.pojo.Page;
+
+import com.github.pagehelper.Page;
 import com.pojo.User;
 import com.service.UserService;
 import org.springframework.stereotype.Service;
@@ -15,23 +16,11 @@ public class UserServiceImpl implements UserService {
     protected UserDao userDao;
 
     @Override
-    public List<User> selectList() {
-        return userDao.selectByParam(null);
-    }
-
-    @Override
     public int insert(User param) {
         return userDao.insertSelective(param);
     }
 
-    @Override
-    public Page<User> getPageByParam(Page<User> page, User param) {
-        List<User> list = userDao.pageList(page.getOffset(), page.getSize(), param);
-        page.setRes(list);
-        int total = userDao.pageTotal(param);
-        page.setTotal(total);
-        return page;
-    }
+
 
     @Override
     public int update(User param) {
@@ -49,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User searchUser(String keyWord) {
-        return userDao.searchUser(keyWord);
+    public List<User>  searchUser(String keyword) {
+        return userDao.searchUser(keyword);
     }
 
 }

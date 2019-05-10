@@ -7,5 +7,5 @@ public interface TeacherDao extends BaseDataDao<Teacher> {
 
     int del(Long id);
 
-    Teacher searchTeacher(String keyWord);
+    Teacher searchTeacher(String keyword);
 }

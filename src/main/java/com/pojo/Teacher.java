@@ -13,14 +13,14 @@ public class Teacher {
     private String unit;
     private Integer isLeader;
     private Integer isDel;
-    private String keyWord;//查询时传入的关键字
+    private String keyword;//查询时传入的关键字
 
     public String getKeyWord() {
-        return keyWord;
+        return keyword;
     }
 
-    public void setKeyWord(String keyWord) {
-        this.keyWord = keyWord;
+    public void setKeyWord(String keyword) {
+        this.keyword = keyword;
     }
 
     public Integer getIsDel() {

@@ -1,9 +1,10 @@
 package com.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.pojo.Page;
+
 import com.pojo.Teacher;
 import com.pojo.User;
 import com.service.TeacherService;
@@ -30,21 +31,14 @@ public class UserController {
 
     //学生管理
     @RequestMapping("/page")
-    public String list(Model model, @RequestParam(value = "pn", defaultValue = "1") Integer pn) {
+    public String list(Model model, Page<User> page, String keyword) {
         //在查询之前需要调用，传入页码，以及每页的大小
-        PageHelper.startPage(pn, 10);
-        List list = userService.selectList();
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        List<User> list = userService.searchUser(keyword);
         //查询出来的数据，和连续显示的页数
-        PageInfo page = new PageInfo(list, 5);
-        model.addAttribute("page",page);
-        return "user_list";
-    }
-
-    @RequestMapping("/changePage")
-    @ResponseBody
-    public String chanPage(Model model, Page<User> page) {
-        page = userService.getPageByParam(page,new User());
-        model.addAttribute("page", page);
+        PageInfo res = new PageInfo(list, 5);
+        model.addAttribute("page",res);
+        model.addAttribute("keyword",keyword);
         return "user_list";
     }
 
@@ -117,17 +111,10 @@ public class UserController {
         return teacherService.del(teacher.getId());
     }
 
-    @RequestMapping("/searchUser")
-    @ResponseBody
-    public Object searchUser(String keyWord){
-        User user = userService.searchUser(keyWord);
-        return user;
-    }
-
     @RequestMapping("/searchTeacher")
     @ResponseBody
-    public Object searchTeacher(String keyWord){
-        return teacherService.searchTeacher(keyWord);
+    public Object searchTeacher(String keyword){
+        return teacherService.searchTeacher(keyword);
     }
 
 }

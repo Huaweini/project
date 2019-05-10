@@ -16,10 +16,6 @@
       SELECT * FROM t_sys_user
     </sql>
 
-    <select id="selectByParam" resultMap="userResultMap">
-        <include refid="select"/>
-    </select>
-
     <select id="selectById" resultMap="userResultMap">
         <include refid="select"/>
         where id=#{id}
@@ -40,7 +36,10 @@
     </select>
 
     <select id="searchUser" resultMap="userResultMap">
-        select * from t_sys_user where concat(login_name,real_name,age,sex,grade,class_num) like CONCAT('%',#{keyWord},'%')
+        select * from t_sys_user
+            <if test="keyword!=null and keyword != ''">
+                where concat(login_name,real_name,age,sex,grade,class_num) like CONCAT('%',#{keyword},'%')
+            </if>
     </select>
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
