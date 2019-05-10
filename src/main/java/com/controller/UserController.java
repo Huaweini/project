@@ -117,5 +117,17 @@ public class UserController {
         return teacherService.del(teacher.getId());
     }
 
+    @RequestMapping("/searchUser")
+    @ResponseBody
+    public Object searchUser(String keyWord){
+        User user = userService.searchUser(keyWord);
+        return user;
+    }
+
+    @RequestMapping("/searchTeacher")
+    @ResponseBody
+    public Object searchTeacher(String keyWord){
+        return teacherService.searchTeacher(keyWord);
+    }
 
 }

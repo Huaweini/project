@@ -18,4 +18,6 @@ public interface UserService {
 
     int del (Long id);
 
+    User searchUser(String keyWord);
+
 }

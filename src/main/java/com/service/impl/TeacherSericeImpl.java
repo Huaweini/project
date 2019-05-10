@@ -37,5 +37,10 @@ public class TeacherSericeImpl implements TeacherService {
     public int update(Teacher teacher) {
         return teacherDao.updateSelective(teacher);
     }
+
+    @Override
+    public Teacher searchTeacher(String keyWord) {
+        return teacherDao.searchTeacher(keyWord);
+    }
 }
 

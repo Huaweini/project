@@ -8,6 +8,15 @@ public class User {
     private Integer age;
     private String sex;
     private String grade;
+    private String keyWord;//查询时传入的关键字
+
+    public String getKeyWord() {
+        return keyWord;
+    }
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
+    }
 
     public Long getId() {
         return id;

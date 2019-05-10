@@ -39,6 +39,10 @@
       select * form t_sys_user WHERE id = #{id}
     </select>
 
+    <select id="searchUser" resultMap="userResultMap">
+        select * from t_sys_user where concat(login_name,real_name,age,sex,grade,class_num) like CONCAT('%',#{keyWord},'%')
+    </select>
+
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_sys_user (login_name,class_num,real_name,age,sex,grade)
         VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});

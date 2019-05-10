@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
         return userDao.del(id);
     }
 
+    @Override
+    public User searchUser(String keyWord) {
+        return userDao.searchUser(keyWord);
+    }
+
 }

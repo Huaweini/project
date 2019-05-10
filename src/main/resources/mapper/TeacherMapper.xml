@@ -45,6 +45,11 @@
       select * form t_sys_teacher WHERE id = #{id}
     </select>
 
+    <select id="searchTeacher" resultMap="userResultMap">
+        select * from t_sys_teacher
+        where concat(login_name,real_name,age,sex,project,rank,unit,grade,class_num) like CONCAT('%',#{keyWord},'%')
+    </select>
+
     <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id" flushCache="true">
         INSERT into t_sys_teacher
         <trim prefix="(" suffix=")" suffixOverrides=",">

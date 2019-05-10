@@ -9,4 +9,6 @@ public interface UserDao extends BaseDataDao<User> {
     User selectById(Long id);
 
     int del (Long id);
+
+    User searchUser(String keyWord);
 }

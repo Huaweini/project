@@ -119,6 +119,22 @@
             $.ajax(ajax)
         }
 
+        function searchTeacher() {
+            var keyWord = $(".form-control").val();
+            console.log(keyWord)
+            $.ajax({
+                url: "${pageContext.request.contextPath}/user/searchTeacher",
+                type: 'post',
+                dataType:'json',
+                data:{
+                    keyWord : keyWord
+                },
+                success : function (data) {
+
+                }
+            })
+        }
+
     </script>
 </head>
 <body>
@@ -170,11 +186,19 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
             <h2 class="sub-header">教师管理</h2>
-            <div>
+            <div style="display:inline;">
                 <!-- 按钮触发模态框 -->
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
             </div>
-            <div class="table-responsive">
+            <div class="col-lg-6" style="display:inline; width: 96%; float: right;">
+                <div class="input-group">
+                    <input type="text" class="form-control" style="width: 127px;" placeholder="输入关键字">
+                    <span class="input-group-btn" style="width: 1px">
+                        <button class="btn btn-default" type="button" onclick="searchTeacher()">查询</button>
+                    </span>
+                </div>
+             </div>
+            <div class="table-responsive" style="margin-top: 10px;">
                 <table class="table table-striped">
                     <thead>
                     <tr>

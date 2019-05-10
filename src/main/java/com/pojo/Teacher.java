@@ -13,7 +13,15 @@ public class Teacher {
     private String unit;
     private Integer isLeader;
     private Integer isDel;
+    private String keyWord;//查询时传入的关键字
 
+    public String getKeyWord() {
+        return keyWord;
+    }
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
+    }
 
     public Integer getIsDel() {
         return isDel;
