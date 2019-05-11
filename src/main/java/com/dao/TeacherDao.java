@@ -1,11 +1,14 @@
 package com.dao;
 
 import com.pojo.Teacher;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TeacherDao extends BaseDataDao<Teacher> {
     Teacher selectById(Long id);
 
     int del(Long id);
 
-    Teacher searchTeacher(String keyword);
+    List<Teacher> searchTeacher(@Param("keyword")String keyword);
 }

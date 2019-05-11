@@ -39,6 +39,10 @@
         select * from t_sys_user
             <if test="keyword!=null and keyword != ''">
                 where concat(login_name,real_name,age,sex,grade,class_num) like CONCAT('%',#{keyword},'%')
+                and isDel = 0
+            </if>
+            <if test="keyword == null or keyword == ''">
+                where isDel = 0
             </if>
     </select>
 
@@ -50,22 +54,22 @@
     <update id="updateSelective" parameterType="com.pojo.User">
         UPDATE t_sys_user
         <set>
-            <if test="loginName!=null">
+            <if test="loginName!=null and loginName != ''">
                 login_name = #{loginName},
             </if>
-            <if test="classNum!=null">
+            <if test="classNum!=null and classNum != ''">
                 class_num = #{classNum},
             </if>
-            <if test="realName!=null">
+            <if test="realName!=null and realName != ''">
                 real_name = #{realName},
             </if>
-            <if test="age!=null">
+            <if test="age!=null and age != ''">
                 age = #{age},
             </if>
-            <if test="sex!=null">
+            <if test="sex!=null and sex != ''">
                 sex = #{sex},
             </if>
-            <if test="grade!=null">
+            <if test="grade!=null and grade != ''">
                 grade = #{grade},
             </if>
         </set>

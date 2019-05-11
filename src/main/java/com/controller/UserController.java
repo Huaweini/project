@@ -75,13 +75,14 @@ public class UserController {
     }
 
     @RequestMapping("/teacherPage")
-    public String teacherPage(Model model, @RequestParam(value = "pn", defaultValue = "1") Integer pn){
+    public String teacherPage(Model model, Page<User> page, String keyword){
         //在查询之前需要调用，传入页码，以及每页的大小
-        PageHelper.startPage(pn, 10);
-        List list = teacherService.selectList();
+        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        List list = teacherService.searchTeacher(keyword);
         //查询出来的数据，和连续显示的页数
-        PageInfo page = new PageInfo(list, 5);
-        model.addAttribute("page",page);
+        PageInfo res = new PageInfo(list, 5);
+        model.addAttribute("page",res);
+        model.addAttribute("keyword",keyword);
         return "teacher_list";
     }
 
@@ -109,12 +110,6 @@ public class UserController {
     @ResponseBody
     public Object delTeacher(Teacher teacher) {
         return teacherService.del(teacher.getId());
-    }
-
-    @RequestMapping("/searchTeacher")
-    @ResponseBody
-    public Object searchTeacher(String keyword){
-        return teacherService.searchTeacher(keyword);
     }
 
 }

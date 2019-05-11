@@ -47,7 +47,14 @@
 
     <select id="searchTeacher" resultMap="userResultMap">
         select * from t_sys_teacher
-        where concat(login_name,real_name,age,sex,project,rank,unit,grade,class_num) like CONCAT('%',#{keyword},'%')
+        <if test="keyword!=null and keyword != ''">
+            where concat(login_name,real_name,age,sex,project,rank,unit,grade,class_num) like CONCAT('%',#{keyword},'%')
+            and isDel = 0
+        </if>
+        <if test="keyword == null or keyword == ''">
+            where isDel = 0
+        </if>
+            order by rank
     </select>
 
     <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id" flushCache="true">
@@ -127,34 +134,34 @@
     <update id="updateSelective" parameterType="com.pojo.Teacher">
         UPDATE t_sys_teacher
         <set>
-            <if test="loginName!=null">
+            <if test="loginName!=null and loginName != ''">
                 login_name = #{loginName},
             </if>
-            <if test="classNum!=null">
+            <if test="classNum!=null and classNum != ''">
                 class_num = #{classNum},
             </if>
-            <if test="realName!=null">
+            <if test="realName!=null and realName != ''">
                 real_name = #{realName},
             </if>
-            <if test="age!=null">
+            <if test="age!=null and age != ''">
                 age = #{age},
             </if>
-            <if test="sex!=null">
+            <if test="sex!=null and sex != ''">
                 sex = #{sex},
             </if>
-            <if test="grade!=null">
+            <if test="grade!=null and grade != ''">
                 grade = #{grade},
             </if>
-            <if test="project!=null">
+            <if test="project!=null and project != ''">
                 project = #{project},
             </if>
-            <if test="rank!=null">
+            <if test="rank!=null and rank != ''">
                 rank = #{rank},
             </if>
-            <if test="unit!=null">
+            <if test="unit!=null and unit != ''">
                 unit = #{unit},
             </if>
-            <if test="isLeader!=null">
+            <if test="isLeader!=null and isLeader != ''">
                 isLeader = #{isLeader},
             </if>
         </set>

@@ -121,7 +121,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="margin-top: 80px;background-color: #b3b4b524">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">学生管理 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
                 <li><a href="#">正在开发……</a></li>
                 <li><a href="#">正在开发……</a></li>

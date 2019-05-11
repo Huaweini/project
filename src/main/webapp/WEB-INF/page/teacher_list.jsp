@@ -113,6 +113,7 @@
                 type: "post",
                 dataType: "json",
                 success: function (res) {
+                    window.alert('修改成功:)')
                     window.location.reload()
                 }
             }
@@ -120,19 +121,8 @@
         }
 
         function searchTeacher() {
-            var keyword = $(".form-control").val();
-            console.log(keyword)
-            $.ajax({
-                url: "${pageContext.request.contextPath}/user/searchTeacher",
-                type: 'post',
-                dataType:'json',
-                data:{
-                    keyword : keyword
-                },
-                success : function (data) {
-
-                }
-            })
+            $("#pageNum").val(0);
+            $("#searchForm").submit();
         }
 
     </script>
@@ -166,8 +156,9 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="margin-top: 80px;background-color: #b3b4b524">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">教师管理</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a>
+                </li>
+                <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
                 <li><a href="#">正在开发……</a></li>
                 <li><a href="#">正在开发……</a></li>
             </ul>
@@ -185,110 +176,128 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
-            <h2 class="sub-header">教师管理</h2>
-            <div style="display:inline;">
-                <!-- 按钮触发模态框 -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
-            </div>
-            <div class="col-lg-6" style="display:inline; width: 96%; float: right;">
-                <div class="input-group">
-                    <input type="text" class="form-control" style="width: 127px;" placeholder="输入关键字">
-                    <span class="input-group-btn" style="width: 1px">
-                        <button class="btn btn-default" type="button" onclick="searchTeacher()">查询</button>
-                    </span>
+            <div class="row">
+                <h2 class="sub-header" style="margin-left: 10px">教师管理</h2>
+                <div class="col-sm-1">
+                    <!-- 按钮触发模态框 -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
                 </div>
-             </div>
-            <div class="table-responsive" style="margin-top: 10px;">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>昵称</th>
-                        <th>年级</th>
-                        <th>班级</th>
-                        <th>姓名</th>
-                        <th>年龄</th>
-                        <th>性别</th>
-                        <th>科目</th>
-                        <th>职位</th>
-                        <th>部门</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="teacher" items="${page.list}" varStatus="status">
+                <div class="col-lg-6">
+                    <form action="" method="post" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" value="${keyword}"
+                                   placeholder="输入关键字">
+                            <span class="input-group-btn" style="width: 1px">
+                                <button class="btn btn-default" type="button" onclick="searchTeacher()">查询</button>
+                                <input type="hidden" id="pageNum" name="pageNum" value="${page.pageNum}"/>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 table-responsive" style="margin-top: 10px;">
+                    <table class="table table-striped">
+                        <thead>
                         <tr>
-                            <td>${teacher.loginName}</td>
-                            <td>${teacher.grade}</td>
-                            <td>${teacher.classNum}</td>
-                            <td>${teacher.realName}</td>
-                            <td>${teacher.age}</td>
-                            <td>${teacher.sex}</td>
-                            <td>${teacher.project}</td>
-                            <td>
-                                <c:if test="${teacher.rank == 1}">
-                                    <span>校长</span>
-                                </c:if>
-                                <c:if test="${teacher.rank == 2}">
-                                    <span>副校长</span>
-                                </c:if>
-                                <c:if test="${teacher.rank == 3}">
-                                    <span>主任</span>
-                                </c:if>
-                                <c:if test="${teacher.rank == 4}">
-                                    <span>班主任</span>
-                                </c:if>
-                                <c:if test="${teacher.rank == 5}">
-                                    <span>老师</span>
-                                </c:if>
-                            </td>
-                            <td>${teacher.unit}</td>
-                            <td>
-                                <!-- 按钮触发模态框 -->
-                                <button type="button" class="btn btn-info" onclick="editPage(${teacher.id})"
-                                        data-toggle="modal" data-target="#myModal1">修改
-                                </button>
-                                <button type="button" class="btn btn-danger"
-                                        data-toggle="modal" data-target="#myModal2">删除
-                                </button>
-                            </td>
+                            <th>昵称</th>
+                            <th>年级</th>
+                            <th>班级</th>
+                            <th>姓名</th>
+                            <th>年龄</th>
+                            <th>性别</th>
+                            <th>科目</th>
+                            <th>职位</th>
+                            <th>部门</th>
+                            <th>操作</th>
                         </tr>
-                        <!--确认删除弹窗-->
-                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="width: 300px;margin-top: 300px;margin-left: 200px;">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                            <button type="button" class="btn btn-danger" onclick="del(${teacher.id})">确认删除</button>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="teacher" items="${page.list}" varStatus="status">
+                            <tr>
+                                <td>${teacher.loginName}</td>
+                                <td>${teacher.grade}</td>
+                                <td>${teacher.classNum}</td>
+                                <td>${teacher.realName}</td>
+                                <td>${teacher.age}</td>
+                                <td>${teacher.sex}</td>
+                                <td>${teacher.project}</td>
+                                <td>
+                                    <c:if test="${teacher.rank == 1}">
+                                        <span>校长</span>
+                                    </c:if>
+                                    <c:if test="${teacher.rank == 2}">
+                                        <span>副校长</span>
+                                    </c:if>
+                                    <c:if test="${teacher.rank == 3}">
+                                        <span>主任</span>
+                                    </c:if>
+                                    <c:if test="${teacher.rank == 4}">
+                                        <span>班主任</span>
+                                    </c:if>
+                                    <c:if test="${teacher.rank == 5}">
+                                        <span>老师</span>
+                                    </c:if>
+                                </td>
+                                <td>${teacher.unit}</td>
+                                <td>
+                                    <!-- 按钮触发模态框 -->
+                                    <button type="button" class="btn btn-info" onclick="editPage(${teacher.id})"
+                                            data-toggle="modal" data-target="#myModal1">修改
+                                    </button>
+                                    <button type="button" class="btn btn-danger"
+                                            data-toggle="modal" data-target="#myModal2">删除
+                                    </button>
+                                </td>
+                            </tr>
+                            <!--确认删除弹窗-->
+                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel2"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content"
+                                         style="width: 300px;margin-top: 300px;margin-left: 200px;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                </button>
+                                                <button type="button" class="btn btn-danger"
+                                                        onclick="del(${teacher.id})">
+                                                    确认删除
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- 显示分页信息 -->
             <div class="row">
                 <!--分页文字信息  -->
                 <div class="col-md-6">当前 ${page.pageNum }页,总${page.pages }
-                    页,总 ${page.total } 条记录</div>
+                    页,总 ${page.total } 条记录
+                </div>
                 <!-- 分页条信息 -->
                 <div class="col-md-6">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                            <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=1">首页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/teacherPage?pageNum=1">首页</a></li>
                             <c:if test="${page.hasPreviousPage }">
-                                <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page.pageNum-1}"
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/user/teacherPage?pageNum=${page.pageNum-1}"
                                        aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-                                </a></li>
+                                    </a></li>
                             </c:if>
 
                             <c:forEach items="${page.navigatepageNums }" var="page_Num">
@@ -296,16 +305,21 @@
                                     <li class="active"><a href="#">${page_Num }</a></li>
                                 </c:if>
                                 <c:if test="${page_Num != page.pageNum }">
-                                    <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page_Num }">${page_Num }</a></li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/teacherPage?pageNum=${page_Num }">${page_Num }</a>
+                                    </li>
                                 </c:if>
 
                             </c:forEach>
                             <c:if test="${page.hasNextPage }">
-                                <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page.pageNum+1 }"
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/user/teacherPage?pageNum=${page.pageNum+1 }"
                                        aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-                                </a></li>
+                                    </a></li>
                             </c:if>
-                            <li><a href="${pageContext.request.contextPath}/user/teacherPage?pn=${page.pages}">末页</a></li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/teacherPage?pageNum=${page.pages}">末页</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -449,12 +463,11 @@
 </div>
 
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

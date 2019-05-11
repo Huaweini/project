@@ -39,7 +39,7 @@ public class TeacherSericeImpl implements TeacherService {
     }
 
     @Override
-    public Teacher searchTeacher(String keyword) {
+    public List<Teacher> searchTeacher(String keyword) {
         return teacherDao.searchTeacher(keyword);
     }
 }
