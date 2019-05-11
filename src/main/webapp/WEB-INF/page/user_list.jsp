@@ -141,7 +141,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
             <div class="row">
-                <h2 class="sub-header">学生管理</h2>
+                <h2 class="sub-header" style="margin-left: 10px">学生管理</h2>
                 <div class="col-sm-1">
                     <!-- 按钮触发模态框 -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-9 table-responsive" style="margin-top: 10px;">
+                <div class="col-sm-12 table-responsive" style="margin-top: 10px;">
                     <table class="table table-striped">
                         <thead>
                         <tr>

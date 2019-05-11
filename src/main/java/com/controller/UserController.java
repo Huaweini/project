@@ -67,8 +67,8 @@ public class UserController {
     public Object delUser(User user) {
         return userService.del(user.getId());
     }
-    //教师管理
 
+    //教师管理
     @RequestMapping("/teacherList")
     public String teacherList(){
         return "teacher_list";
