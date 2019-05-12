@@ -31,9 +31,9 @@ public class UserController {
 
     //学生管理
     @RequestMapping("/page")
-    public String list(Model model, Page<User> page, String keyword) {
+    public String list(Model model, Page<User> page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, String keyword) {
         //在查询之前需要调用，传入页码，以及每页的大小
-        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        PageHelper.startPage(page.getPageNum(), pageSize);
         List<User> list = userService.searchUser(keyword);
         //查询出来的数据，和连续显示的页数
         PageInfo res = new PageInfo(list, 5);
@@ -75,9 +75,9 @@ public class UserController {
     }
 
     @RequestMapping("/teacherPage")
-    public String teacherPage(Model model, Page<User> page, String keyword){
+    public String teacherPage(Model model, Page<User> page,  @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, String keyword){
         //在查询之前需要调用，传入页码，以及每页的大小
-        PageHelper.startPage(page.getPageNum(), page.getPageSize());
+        PageHelper.startPage(page.getPageNum(), pageSize);
         List list = teacherService.searchTeacher(keyword);
         //查询出来的数据，和连续显示的页数
         PageInfo res = new PageInfo(list, 5);

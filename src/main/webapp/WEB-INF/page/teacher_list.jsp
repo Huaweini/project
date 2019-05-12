@@ -185,7 +185,7 @@
                     <!-- 按钮触发模态框 -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-sm-6">
                     <form action="" method="post" id="searchForm">
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword" value="${keyword}"
@@ -296,6 +296,9 @@
                             </c:if>
                             <li>
                                 <a href="${pageContext.request.contextPath}/user/teacherPage?pageNum=${page.pages}">末页</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/user/teacherPage?pageSize=10">10</a>
                             </li>
                         </ul>
                     </nav>

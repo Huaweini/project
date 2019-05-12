@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String appPath = request.getContextPath(); %>
 <%@ page isELIgnored="false" %>
@@ -197,31 +198,6 @@
                                     </button>
                                 </td>
                             </tr>
-<%--                            <!--确认删除弹窗-->--%>
-<%--                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"--%>
-<%--                                 aria-labelledby="myModalLabel2"--%>
-<%--                                 aria-hidden="true">--%>
-<%--                                <div class="modal-dialog">--%>
-<%--                                    <div class="modal-content"--%>
-<%--                                         style="width: 300px;margin-top: 300px;margin-left: 200px;">--%>
-<%--                                        <div class="modal-header">--%>
-<%--                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">--%>
-<%--                                                &times;--%>
-<%--                                            </button>--%>
-<%--                                            <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="modal-body">--%>
-<%--                                            <div class="modal-footer">--%>
-<%--                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭--%>
-<%--                                                </button>--%>
-<%--                                                <button type="button" class="btn btn-danger" onclick="del(${user.id})">--%>
-<%--                                                    确认删除--%>
-<%--                                                </button>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </c:forEach>
                         </tbody>
                     </table>
@@ -234,7 +210,7 @@
                     页,总 ${page.total } 条记录
                 </div>
                 <!-- 分页条信息 -->
-                <div class="col-md-6">
+                <div class="col-md-6" style="display: inline">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
                             <li><a href="${pageContext.request.contextPath}/user/page?pageNum=1">首页</a></li>
@@ -243,7 +219,6 @@
                                        aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                                 </a></li>
                             </c:if>
-
                             <c:forEach items="${page.navigatepageNums }" var="page_Num">
                                 <c:if test="${page_Num == page.pageNum }">
                                     <li class="active"><a href="#">${page_Num }</a></li>
@@ -262,9 +237,24 @@
                             </c:if>
                             <li><a href="${pageContext.request.contextPath}/user/page?pageNum=${page.pages}">末页</a>
                             </li>
+                             <li>
+                                 <a href="${pageContext.request.contextPath}/user/page?pageSize=10">10</a>
+                             </li>
                         </ul>
                     </nav>
                 </div>
+                <!--自定义显示条数-->
+<%--                <div class="dropdown" style="display: inline">--%>
+<%--                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--%>
+<%--                        Dropdown--%>
+<%--                        <span class="caret"></span>--%>
+<%--                    </button>--%>
+<%--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">--%>
+<%--                        <li><a href="#">Action</a></li>--%>
+<%--                        <li><a href="#">Another action</a></li>--%>
+<%--                        <li><a href="#">Something else here</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
             </div>
         </div>
     </div>
