@@ -44,6 +44,7 @@
             <if test="keyword == null or keyword == ''">
                 where isDel = 0
             </if>
+            order by grade
     </select>
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">

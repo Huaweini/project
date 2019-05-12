@@ -196,6 +196,9 @@
                                     <button type="button" class="btn btn-danger"
                                             data-toggle="modal" data-target="#myModal2" onclick="del(${user.id})">删除
                                     </button>
+                                    <button type="button" class="btn btn-primary"
+                                            data-toggle="modal" data-target="#myModal3">关联信息
+                                    </button>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -237,24 +240,26 @@
                             </c:if>
                             <li><a href="${pageContext.request.contextPath}/user/page?pageNum=${page.pages}">末页</a>
                             </li>
-                             <li>
-                                 <a href="${pageContext.request.contextPath}/user/page?pageSize=10">10</a>
-                             </li>
+                            <li class="dropdown" style="display: inline;">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    10
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/page?pageSize=10">10</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/page?pageSize=50">50</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/page?pageSize=100">100</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
-                <!--自定义显示条数-->
-<%--                <div class="dropdown" style="display: inline">--%>
-<%--                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--%>
-<%--                        Dropdown--%>
-<%--                        <span class="caret"></span>--%>
-<%--                    </button>--%>
-<%--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">--%>
-<%--                        <li><a href="#">Action</a></li>--%>
-<%--                        <li><a href="#">Another action</a></li>--%>
-<%--                        <li><a href="#">Something else here</a></li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
             </div>
         </div>
     </div>
