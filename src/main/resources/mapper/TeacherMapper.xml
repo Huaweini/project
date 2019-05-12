@@ -54,78 +54,78 @@
         <if test="keyword == null or keyword == ''">
             where isDel = 0
         </if>
-            order by rank
+            ORDER BY rank
     </select>
 
     <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id" flushCache="true">
         INSERT into t_sys_teacher
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="loginName != null">
+            <if test="loginName != null and loginName != '' ">
                 login_name,
             </if>
-            <if test="classNum != null">
+            <if test="classNum != null and classNum != '' ">
                 class_num,
             </if>
-            <if test="realName != null">
+            <if test="realName != null and realName != '' ">
                 real_name,
             </if>
-            <if test="age != null">
+            <if test="age != null and age != '' ">
                 age,
             </if>
-            <if test="sex != null">
+            <if test="sex != null and sex != '' ">
                 sex,
             </if>
             <if test="grade != null and grade != '' ">
                 grade,
             </if>
-            <if test="project != null">
+            <if test="project != null and project != '' ">
                 project,
             </if>
-            <if test="rank != null">
+            <if test="rank != null and rank != '' ">
                 rank,
             </if>
-            <if test="unit != null">
+            <if test="unit != null and unit != '' ">
                 unit,
             </if>
-            <if test="isLeader != null">
+            <if test="isLeader != null and isLeader != '' ">
                 isLeader,
             </if>
-            <if test="isDel != null">
+            <if test="isDel != null and isDel != '' ">
                 isDel,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="loginName != null">
+            <if test="loginName != null and loginName != '' ">
                 #{loginName,jdbcType=VARCHAR},
             </if>
-            <if test="classNum != null">
+            <if test="classNum != null and classNum != '' ">
                 #{classNum,jdbcType=INTEGER},
             </if>
-            <if test="realName != null">
+            <if test="realName != null and realName != '' ">
                 #{realName,jdbcType=VARCHAR},
             </if>
-            <if test="age != null">
+            <if test="age != null and age != '' ">
                 #{age,jdbcType=INTEGER},
             </if>
-            <if test="sex != null">
+            <if test="sex != null and sex != '' ">
                 #{sex,jdbcType=VARCHAR},
             </if>
             <if test="grade != null and grade != '' ">
                 #{grade,jdbcType=INTEGER},
             </if>
-            <if test="project != null">
+            <if test="project != null and project != '' ">
                 #{project,jdbcType=VARCHAR},
             </if>
-            <if test="rank != null">
+            <if test="rank != null and rank != '' ">
                 #{rank,jdbcType=INTEGER},
             </if>
-            <if test="unit != null">
+            <if test="unit != null and unit != '' ">
                 #{unit,jdbcType=VARCHAR},
             </if>
-            <if test="isLeader != null">
+            <if test="isLeader != null and isLeader != '' ">
                 #{isLeader,jdbcType=VARCHAR},
             </if>
-            <if test="isDel != null">
+            <if test="isDel != null and isDel != '' ">
                 #{isDel,jdbcType=INTEGER},
             </if>
         </trim>

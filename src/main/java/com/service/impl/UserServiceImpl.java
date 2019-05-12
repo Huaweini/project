@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int del(Long id) {
-        return userDao.del(id);
+    public int del(User param) {
+        return userDao.del(param);
     }
 
     @Override

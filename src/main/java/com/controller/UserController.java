@@ -65,7 +65,7 @@ public class UserController {
     @RequestMapping("/delUser")
     @ResponseBody
     public Object delUser(User user) {
-        return userService.del(user.getId());
+        return userService.del(user);
     }
 
     //教师管理

@@ -71,18 +71,21 @@
         }
 
         function del(id) {
-            var ajax = {
-                url: "${pageContext.request.contextPath}/user/delUser",
-                data: {
-                    "id": id
-                },
-                type: "post",
-                dataType: "json",
-                success: function (res) {
-                    window.location.reload()
+            if(confirm("确定删除?")){
+                var ajax = {
+                    url: "${pageContext.request.contextPath}/user/delUser",
+                    data: {
+                        "id": id
+                    },
+                    type: "post",
+                    dataType: "json",
+                    success: function (res) {
+                        window.alert('删除成功:)')
+                        window.location.reload()
+                    }
                 }
+                $.ajax(ajax)
             }
-            $.ajax(ajax)
         }
 
         function searchUser() {
@@ -121,7 +124,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style="margin-top: 80px;background-color: #b3b4b524">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a>
+                </li>
                 <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
                 <li><a href="#">正在开发……</a></li>
                 <li><a href="#">正在开发……</a></li>
@@ -176,7 +180,7 @@
                         <tbody>
                         <c:forEach var="user" items="${page.list}" varStatus="status">
                             <tr>
-                                <input type="hidden" class="userId" value="${user.id}"/>
+
                                 <td>${user.loginName}</td>
                                 <td>${user.grade}</td>
                                 <td>${user.classNum}</td>
@@ -189,35 +193,35 @@
                                             data-toggle="modal" data-target="#myModal1">修改
                                     </button>
                                     <button type="button" class="btn btn-danger"
-                                            data-toggle="modal" data-target="#myModal2">删除
+                                            data-toggle="modal" data-target="#myModal2" onclick="del(${user.id})">删除
                                     </button>
                                 </td>
                             </tr>
-                            <!--确认删除弹窗-->
-                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel2"
-                                 aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content"
-                                         style="width: 300px;margin-top: 300px;margin-left: 200px;">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                &times;
-                                            </button>
-                                            <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                                                </button>
-                                                <button type="button" class="btn btn-danger" onclick="del(${user.id})">
-                                                    确认删除
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<%--                            <!--确认删除弹窗-->--%>
+<%--                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"--%>
+<%--                                 aria-labelledby="myModalLabel2"--%>
+<%--                                 aria-hidden="true">--%>
+<%--                                <div class="modal-dialog">--%>
+<%--                                    <div class="modal-content"--%>
+<%--                                         style="width: 300px;margin-top: 300px;margin-left: 200px;">--%>
+<%--                                        <div class="modal-header">--%>
+<%--                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">--%>
+<%--                                                &times;--%>
+<%--                                            </button>--%>
+<%--                                            <h4 class="modal-title" id="myModalLabel2">确认删除？</h4>--%>
+<%--                                        </div>--%>
+<%--                                        <div class="modal-body">--%>
+<%--                                            <div class="modal-footer">--%>
+<%--                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭--%>
+<%--                                                </button>--%>
+<%--                                                <button type="button" class="btn btn-danger" onclick="del(${user.id})">--%>
+<%--                                                    确认删除--%>
+<%--                                                </button>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                         </c:forEach>
                         </tbody>
                     </table>

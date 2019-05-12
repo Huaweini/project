@@ -47,8 +47,47 @@
     </select>
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-        INSERT into t_sys_user (login_name,class_num,real_name,age,sex,grade)
-        VALUES (#{loginName},#{classNum},#{realName},#{age},#{sex},#{grade});
+        INSERT into t_sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="loginName != null and loginName != '' ">
+                login_name,
+            </if>
+            <if test="classNum != null and classNum != '' ">
+                class_num,
+            </if>
+            <if test="realName != null and realName != '' ">
+                real_name,
+            </if>
+            <if test="age != null and age != '' ">
+                age,
+            </if>
+            <if test="sex != null and sex != '' ">
+                sex,
+            </if>
+            <if test="grade != null and grade != '' ">
+                grade,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="loginName != null and loginName != '' ">
+                #{loginName,jdbcType=VARCHAR},
+            </if>
+            <if test="classNum != null and classNum != '' ">
+                #{classNum,jdbcType=INTEGER},
+            </if>
+            <if test="realName != null and realName != '' ">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null and age != '' ">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null and sex != '' ">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null and grade != '' ">
+                #{grade,jdbcType=INTEGER},
+            </if>
+        </trim>
     </insert>
 
     <update id="updateSelective" parameterType="com.pojo.User">

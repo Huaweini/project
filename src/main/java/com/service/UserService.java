@@ -13,7 +13,7 @@ public interface UserService {
 
     User selectById(Long id);
 
-    int del (Long id);
+    int del (User param);
 
     List<User>  searchUser(String keyword);
 
