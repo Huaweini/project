@@ -181,7 +181,6 @@
                         <tbody>
                         <c:forEach var="user" items="${page.list}" varStatus="status">
                             <tr>
-
                                 <td>${user.loginName}</td>
                                 <td>${user.grade}</td>
                                 <td>${user.classNum}</td>
@@ -242,7 +241,7 @@
                             </li>
                             <li class="dropdown" style="display: inline;">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    10
+                                    ${page.pageSize}
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
