@@ -299,7 +299,16 @@
                             </tr>
                             <tr>
                                 <td>性别</td>
-                                <td><input name="sex" type="text"/></td>
+                                <td>
+                                    <select name="sex" style="height: 28px;">
+                                        <option value="男">
+                                            男
+                                        </option>
+                                        <option value="女">
+                                            女
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                     </form>

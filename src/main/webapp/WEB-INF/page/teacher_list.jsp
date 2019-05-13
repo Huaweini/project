@@ -360,24 +360,98 @@
                             </tr>
                             <tr>
                                 <td>性别</td>
-                                <td><input name="sex" type="text"/></td>
+                                <td>
+                                    <select name="sex" style="height: 28px;">
+                                        <option value="男">
+                                            男
+                                        </option>
+                                        <option value="女">
+                                            女
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>科目</td>
-                                <td><input name="project" type="text"/></td>
+                                <td>
+                                    <select name="project" style="height: 28px;">
+                                        <option value="">
+                                            无
+                                        </option>
+                                        <option value="语文">
+                                            语文
+                                        </option>
+                                        <option value="数学">
+                                            数学
+                                        </option>
+                                        <option value="物理">
+                                            物理
+                                        </option>
+                                        <option value="化学">
+                                            化学
+                                        </option>
+                                        <option value="英语">
+                                            英语
+                                        </option>
+                                        <option value="政治">
+                                            政治
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>职位</td>
                                 <td>
-                                    <input name="rank" type="text" placeholder="请输入数字"/>
-                                    <div>
-                                        <span>1-校长,2-副校长,3-主任,4-班主任,5-老师</span>
-                                    </div>
+                                    <select name="rank" style="height: 28px;">
+                                        1-校长,2-副校长,3-主任,4-班主任,5-老师
+                                        <option value="1">
+                                            1-校长
+                                        </option>
+                                        <option value="2">
+                                            2-副校长
+                                        </option>
+                                        <option value="3">
+                                            3-主任
+                                        </option>
+                                        <option value="4">
+                                            4-班主任
+                                        </option>
+                                        <option value="5">
+                                            5-老师
+                                        </option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>部门</td>
-                                <td><input name="unit" type="text"/></td>
+                                <td>
+                                    <select name="unit" style="height: 28px;">
+                                        <option value="语文教研室">
+                                            语文教研室
+                                        </option>
+                                        <option value="数学教研室">
+                                            数学教研室
+                                        </option>
+                                        <option value="物理教研室">
+                                            物理教研室
+                                        </option>
+                                        <option value="化学教研室">
+                                            化学教研室
+                                        </option>
+                                        <option value="英语教研室">
+                                            英语教研室
+                                        </option>
+                                        <option value="政治教研室">
+                                            政治教研室
+                                        </option>
+                                        <option value="学生处">
+                                            学生处
+                                        </option>
+                                        <option value="管理层">
+                                            管理层
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                     </form>
