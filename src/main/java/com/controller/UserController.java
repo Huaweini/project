@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -66,6 +69,17 @@ public class UserController {
     @ResponseBody
     public Object delUser(User user) {
         return userService.del(user);
+    }
+
+    //查询自己班的授课老师
+    @RequestMapping("/myTeacher")
+    @ResponseBody
+    public Object myTeacher(@RequestParam(value = "grade") String grade, @RequestParam(value = "classNum") Integer classNum){
+        JSONObject res = new JSONObject();
+        Map<String, Object> resultMap = new HashMap<>();
+        List<Teacher> myTeacherList = teacherService.myTeacher(grade,classNum);
+        resultMap.put("myTeacherList", myTeacherList);
+        return resultMap;
     }
 
     //教师管理

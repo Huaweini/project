@@ -93,6 +93,21 @@
             $("#pageNum").val(0);
             $("#searchForm").submit();
         }
+        function myTeacher(grade,classNum) {
+            var ajax = {
+                url: "${pageContext.request.contextPath}/user/myTeacher",
+                data: {
+                    "grade": grade,
+                    "classNum": classNum
+                },
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+                    $(".tProject").val(res.project);
+                }
+            }
+            $.ajax(ajax)
+        }
 
     </script>
 </head>
@@ -192,11 +207,9 @@
                                     <button type="button" class="btn btn-info" onclick="editPage(${user.id})"
                                             data-toggle="modal" data-target="#myModal1">修改
                                     </button>
-                                    <button type="button" class="btn btn-danger"
-                                            data-toggle="modal" data-target="#myModal2" onclick="del(${user.id})">删除
-                                    </button>
+                                    <button type="button" class="btn btn-danger" onclick="del(${user.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
-                                            data-toggle="modal" data-target="#myModal3">关联信息
+                                            data-toggle="modal" data-target="#myModal2" onclick="myTeacher(${user.grade},${user.classNum})">授课老师
                                     </button>
                                 </td>
                             </tr>
@@ -373,6 +386,45 @@
     </div>
 </div>
 
+<!--授课老师页面-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel2">授课老师</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>
+                                    学科
+                                </td>
+                                <td>
+                                    老师姓名
+                                </td>
+                                <td>
+                                    职位
+                                </td>
+                            </tr>
+                            <c:forEach var="list" items="${resultMap}" varStatus="status">
+                            <tr>
+                                <td>${list.project}</td>
+                                <td>${list.realName}</td>
+                                <td>${list.rank}</td>
+                            </tr>
+                            </c:forEach>
+                        </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

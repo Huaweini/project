@@ -248,11 +248,9 @@
                                     <button type="button" class="btn btn-info" onclick="editPage(${teacher.id})"
                                             data-toggle="modal" data-target="#myModal1">修改
                                     </button>
-                                    <button type="button" class="btn btn-danger"
-                                            data-toggle="modal" data-target="#myModal2" onclick="del(${teacher.id})">删除
-                                    </button>
+                                    <button type="button" class="btn btn-danger" onclick="del(${teacher.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
-                                            data-toggle="modal" data-target="#myModal2">关联信息
+                                            data-toggle="modal" data-target="#myModal2">TA的学生
                                     </button>
                                 </td>
                             </tr>

@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserDao extends BaseDataDao<User> {
     User selectById(Long id);
 
-    int del (User param);
+    int del(User param);
 
-    List<User> searchUser(@Param("keyword")String keyword);
+    List<User> searchUser(@Param("keyword") String keyword);
 }

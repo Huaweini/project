@@ -16,5 +16,4 @@ public interface UserService {
     int del (User param);
 
     List<User>  searchUser(String keyword);
-
 }

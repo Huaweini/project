@@ -42,5 +42,10 @@ public class TeacherSericeImpl implements TeacherService {
     public List<Teacher> searchTeacher(String keyword) {
         return teacherDao.searchTeacher(keyword);
     }
+
+    @Override
+    public List<Teacher> myTeacher(String grade, Integer classNum) {
+        return teacherDao.myTeacher(grade,classNum);
+    }
 }
 

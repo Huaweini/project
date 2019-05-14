@@ -57,6 +57,12 @@
             ORDER BY rank
     </select>
 
+    <select id="myTeacher" resultMap="userResultMap">
+        select project,real_name,rank
+        from t_sys_teacher
+        where grade = #{grade} and class_num = #{classNum}
+    </select>
+
     <insert id="insertSelective" parameterType="Teacher" useGeneratedKeys="true" keyProperty="id" flushCache="true">
         INSERT into t_sys_teacher
         <trim prefix="(" suffix=")" suffixOverrides=",">
