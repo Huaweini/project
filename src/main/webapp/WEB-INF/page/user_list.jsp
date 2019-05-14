@@ -93,6 +93,7 @@
             $("#pageNum").val(0);
             $("#searchForm").submit();
         }
+
         function myTeacher(grade,classNum) {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/myTeacher",
@@ -102,13 +103,13 @@
                 },
                 type: "post",
                 dataType: "json",
-                success: function (res) {
-                    $(".tProject").val(res.project);
+                success: function (data) {
+                    var res = data.myTeacherList;
+                    console.log(res)
                 }
             }
             $.ajax(ajax)
         }
-
     </script>
 </head>
 <body>
@@ -409,11 +410,11 @@
                                     职位
                                 </td>
                             </tr>
-                            <c:forEach var="list" items="${resultMap}" varStatus="status">
+                            <c:forEach var="myteacher" items="${resultMap.myTeacherList}" varStatus="status">
                             <tr>
-                                <td>${list.project}</td>
-                                <td>${list.realName}</td>
-                                <td>${list.rank}</td>
+                                <td>${myteacher.project}</td>
+                                <td>${myteacher.realName}</td>
+                                <td>${myteacher.rank}</td>
                             </tr>
                             </c:forEach>
                         </table>

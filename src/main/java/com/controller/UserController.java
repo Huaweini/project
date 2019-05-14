@@ -75,8 +75,7 @@ public class UserController {
     @RequestMapping("/myTeacher")
     @ResponseBody
     public Object myTeacher(@RequestParam(value = "grade") String grade, @RequestParam(value = "classNum") Integer classNum){
-        JSONObject res = new JSONObject();
-        Map<String, Object> resultMap = new HashMap<>();
+        Map<String, List<Teacher>> resultMap = new HashMap<>();
         List<Teacher> myTeacherList = teacherService.myTeacher(grade,classNum);
         resultMap.put("myTeacherList", myTeacherList);
         return resultMap;
