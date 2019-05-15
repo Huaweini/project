@@ -106,6 +106,10 @@
                 success: function (data) {
                     var res = data.myTeacherList;
                     console.log(res)
+                    var project = res.project;
+                    var realName = res.realName;
+                    var rank = res.rank;
+                    $(".myTeacherList").html("<td>"+project+"</td>")
                 }
             }
             $.ajax(ajax)
@@ -410,13 +414,9 @@
                                     职位
                                 </td>
                             </tr>
-                            <c:forEach var="myteacher" items="${resultMap.myTeacherList}" varStatus="status">
-                            <tr>
-                                <td>${myteacher.project}</td>
-                                <td>${myteacher.realName}</td>
-                                <td>${myteacher.rank}</td>
+                            <tr class="myTeacherList">
+
                             </tr>
-                            </c:forEach>
                         </table>
                 </div>
             </div>
