@@ -22,6 +22,10 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
+        function addFrom() {
+            $("#saveForm1").reset();
+        }
+        
         function addUser() {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/addUser",
@@ -51,7 +55,8 @@
                     $("input[name='grade']").val(res.grade);
                     $("input[name='classNum']").val(res.classNum);
                     $("input[name='age']").val(res.age);
-                    $("input[name='sex']").val(res.sex);
+                    $("select[name='sex']").select(res.sex);
+                    $("select[name='sex'] option[value='"+res.sex+"']").attr("selected","selected");
                 }
             }
             $.ajax(ajax)
@@ -188,7 +193,7 @@
                 <h2 class="sub-header" style="margin-left: 10px">学生管理</h2>
                 <div class="col-sm-1">
                     <!-- 按钮触发模态框 -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"onclick="addFrom()">新增</button>
                 </div>
                 <div class="col-sm-6">
                     <form action="" method="post" id="searchForm">
@@ -398,7 +403,16 @@
                             </tr>
                             <tr>
                                 <td>性别</td>
-                                <td><input name="sex" type="text" class="sex"/></td>
+                                <td>
+                                    <select name="sex" style="height: 28px;">
+                                        <option value="男">
+                                            男
+                                        </option>
+                                        <option value="女">
+                                            女
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                     </form>
