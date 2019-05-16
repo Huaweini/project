@@ -72,7 +72,7 @@
         }
 
         function del(id) {
-            if(confirm("确定删除?")){
+            if (confirm("确定删除?")) {
                 var ajax = {
                     url: "${pageContext.request.contextPath}/user/delUser",
                     data: {
@@ -94,7 +94,7 @@
             $("#searchForm").submit();
         }
 
-        function myTeacher(grade,classNum) {
+        function myTeacher(grade, classNum) {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/myTeacher",
                 data: {
@@ -104,12 +104,31 @@
                 type: "post",
                 dataType: "json",
                 success: function (data) {
-                    var res = data.myTeacherList;
-                    console.log(res)
-                    var project = res.project;
-                    var realName = res.realName;
-                    var rank = res.rank;
-                    $(".myTeacherList").html("<td>"+project+"</td>")
+                    console.log(data);
+                    var value = "";
+                    for (var i = 0; i < data.myTeacherList.length; i++) {
+                        if (data.myTeacherList[i].rank == 1){
+                            var rank="校长"
+                        }
+                        else if (data.myTeacherList[i].rank == 2){
+                            var rank="副校长"
+                        }
+                        else if (data.myTeacherList[i].rank == 3){
+                            var rank="主任"
+                        }
+                        else if (data.myTeacherList[i].rank == 4){
+                            var rank="班主任"
+                        }
+                        else {
+                            var rank="老师"
+                        }
+                        value +="<tr>";
+                        value += "<td>" + data.myTeacherList[i].project + "</td>";
+                        value += "<td>" + data.myTeacherList[i].realName + "</td>";
+                        value += "<td>" +rank+ "</td>";
+                        value += "</tr>";
+                    }
+                    $(".myTeacherList").html(value);
                 }
             }
             $.ajax(ajax)
@@ -214,7 +233,8 @@
                                     </button>
                                     <button type="button" class="btn btn-danger" onclick="del(${user.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
-                                            data-toggle="modal" data-target="#myModal2" onclick="myTeacher(${user.grade},${user.classNum})">授课老师
+                                            data-toggle="modal" data-target="#myModal2"
+                                            onclick="myTeacher(${user.grade},${user.classNum})">授课老师
                                     </button>
                                 </td>
                             </tr>
@@ -258,7 +278,8 @@
                             <li><a href="${pageContext.request.contextPath}/user/page?pageNum=${page.pages}">末页</a>
                             </li>
                             <li class="dropdown" style="display: inline;">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     ${page.pageSize}
                                     <span class="caret"></span>
                                 </button>
@@ -402,22 +423,23 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                        <table class="table table-striped">
-                            <tr>
-                                <td>
-                                    学科
-                                </td>
-                                <td>
-                                    老师姓名
-                                </td>
-                                <td>
-                                    职位
-                                </td>
-                            </tr>
-                            <tr class="myTeacherList">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                学科
+                            </td>
+                            <td>
+                                老师姓名
+                            </td>
+                            <td>
+                                职位
+                            </td>
+                        </tr>
+                        <tbody class="myTeacherList">
+                        <tr></tr>
+                        </tbody>
 
-                            </tr>
-                        </table>
+                    </table>
                 </div>
             </div>
             <div class="modal-footer">
