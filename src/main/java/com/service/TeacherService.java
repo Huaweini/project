@@ -18,4 +18,6 @@ public interface TeacherService {
     List<Teacher> searchTeacher(String keyword);
 
     List<Teacher> myTeacher(String grade, Integer classNum);
+
+    List<Teacher> showLeader(String unit);
 }

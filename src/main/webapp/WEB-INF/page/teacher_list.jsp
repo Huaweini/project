@@ -127,7 +127,44 @@
             $("#pageNum").val(0);
             $("#searchForm").submit();
         }
+        function showLeader(unit){
+            var ajax = {
+            url: "${pageContext.request.contextPath}/user/showLeader",
+            data: {
+                "unit": unit
+            },
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                var value = "";
+                for (var i = 0; i < data.myTeacherList.length; i++) {
+                    if (data.myTeacherList[i].rank == 1){
+                        var rank="校长"
+                    }
+                    else if (data.myTeacherList[i].rank == 2){
+                        var rank="副校长"
+                    }
+                    else if (data.myTeacherList[i].rank == 3){
+                        var rank="主任"
+                    }
+                    else if (data.myTeacherList[i].rank == 4){
+                        var rank="班主任"
+                    }
+                    else {
+                        var rank="老师"
+                    }
+                    value +="<tr>";
 
+                    value += "<td>" + data.myTeacherList[i].realName + "</td>";
+                    value += "<td>" +rank+ "</td>";
+                    value += "</tr>";
+                }
+                $(".showLeaderList").html(value);
+            }
+        }
+            $.ajax(ajax)
+        }
     </script>
 </head>
 <body>
@@ -250,7 +287,7 @@
                                     </button>
                                     <button type="button" class="btn btn-danger" onclick="del(${teacher.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
-                                            data-toggle="modal" data-target="#myModal2">TA的学生
+                                            data-toggle="modal" data-target="#myModal2"　onclick="showLeader(${teacher.unit})">TA的学生
                                     </button>
                                 </td>
                             </tr>
@@ -531,6 +568,38 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel2">授课老师</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                学科
+                            </td>
+                            <td>
+                                老师姓名
+                            </td>
+
+                        </tr>
+                        <tbody class="showLeaderList">
+                        <tr></tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

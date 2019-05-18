@@ -80,7 +80,15 @@ public class UserController {
         resultMap.put("myTeacherList", myTeacherList);
         return resultMap;
     }
-
+    //查询教师的领导
+    @RequestMapping("/showLeader")
+    @ResponseBody
+    public Object showLeader(@RequestParam(value = "unit") String unit){
+        Map<String, List<Teacher>> resultMap = new HashMap<>();
+        List<Teacher> showLeaderList = teacherService.showLeader(unit);
+        resultMap.put("showLeaderList", showLeaderList);
+        return resultMap;
+    }
     //教师管理
     @RequestMapping("/teacherList")
     public String teacherList(){
