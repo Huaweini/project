@@ -49,8 +49,8 @@ public class TeacherSericeImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> showLeader(String unit) {
-        return teacherDao.showLeader(unit);
+    public List<Teacher> myLeader(String unit) {
+        return teacherDao.myLeader(unit);
     }
 }
 

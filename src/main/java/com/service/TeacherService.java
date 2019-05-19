@@ -19,5 +19,6 @@ public interface TeacherService {
 
     List<Teacher> myTeacher(String grade, Integer classNum);
 
-    List<Teacher> showLeader(String unit);
+    List<Teacher> myLeader(String unit);
+
 }

@@ -14,5 +14,5 @@ public interface TeacherDao extends BaseDataDao<Teacher> {
 
     List<Teacher> myTeacher(@Param("grade")String grade, @Param("classNum")Integer classNum);
 
-    List<Teacher> showLeader(@Param("unit")String unit);
+    List<Teacher> myLeader(String unit);
 }

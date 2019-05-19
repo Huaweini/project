@@ -452,7 +452,6 @@
                         <tbody class="myTeacherList">
                         <tr></tr>
                         </tbody>
-
                     </table>
                 </div>
             </div>

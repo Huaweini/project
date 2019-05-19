@@ -63,8 +63,8 @@
         where grade = #{grade} and class_num = #{classNum}
     </select>
 
-    <select id="showLeader" resultMap="userResultMap">
-        select real_name,rank
+    <select id="myLeader" resultMap="userResultMap">
+        select real_name,rank,unit
         from t_sys_teacher
         where unit = #{unit} and isLeader = 1
     </select>

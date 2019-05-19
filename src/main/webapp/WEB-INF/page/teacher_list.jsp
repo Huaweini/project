@@ -20,39 +20,8 @@
     <title>教师管理系统</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
     <script type="text/javascript">
-        <%--var page = '${page.page}';//当前页--%>
-        <%--var size = '${page.size}';//每页显示的条数--%>
-        <%--var total = '${page.total}';//数据总条数--%>
-
-        function lastpage() {
-            var ajax = {
-                contentType: "application/json;charset=UTF-8",
-                url: "./changePage",
-                data: {},
-                type: "post",
-                dataType: "json",
-                success: function () {
-                    window.location.reload()
-                }
-            }
-            $.ajax(ajax)
-        }
-
-        function nextpage() {
-            var ajax = {
-                contentType: "application/json;charset=UTF-8",
-                url: "./changePage",
-                data: {},
-                type: "post",
-                dataType: "json",
-                success: function () {
-                    window.location.reload()
-                }
-            }
-            $.ajax(ajax)
-        }
-
         function addTeacher() {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/addTeacher",
@@ -127,42 +96,25 @@
             $("#pageNum").val(0);
             $("#searchForm").submit();
         }
-        function showLeader(unit){
-            var ajax = {
-            url: "${pageContext.request.contextPath}/user/showLeader",
-            data: {
-                "unit": unit
-            },
-            type: "post",
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-                var value = "";
-                for (var i = 0; i < data.myTeacherList.length; i++) {
-                    if (data.myTeacherList[i].rank == 1){
-                        var rank="校长"
-                    }
-                    else if (data.myTeacherList[i].rank == 2){
-                        var rank="副校长"
-                    }
-                    else if (data.myTeacherList[i].rank == 3){
-                        var rank="主任"
-                    }
-                    else if (data.myTeacherList[i].rank == 4){
-                        var rank="班主任"
-                    }
-                    else {
-                        var rank="老师"
-                    }
-                    value +="<tr>";
 
-                    value += "<td>" + data.myTeacherList[i].realName + "</td>";
-                    value += "<td>" +rank+ "</td>";
-                    value += "</tr>";
+        function myLeader(unit) {
+            var ajax = {
+                url: "${pageContext.request.contextPath}/user/myLeader",
+                data: {"unit": unit},
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+                    console.log(res)
+                    var value = "";
+                    for (var i = 0;i<res.length;i++){
+                        value += "<tr>";
+                        value += "<td>" + res[i].realName + "</td>";
+                        value += "<td>" + res[i].unit + "</td>";
+                        value += "</tr>";
+                    }
+                    $(".myLeader").html(value);
                 }
-                $(".showLeaderList").html(value);
             }
-        }
             $.ajax(ajax)
         }
     </script>
@@ -287,7 +239,7 @@
                                     </button>
                                     <button type="button" class="btn btn-danger" onclick="del(${teacher.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
-                                            data-toggle="modal" data-target="#myModal2"　onclick="showLeader(${teacher.unit})">TA的学生
+                                            data-toggle="modal" data-target="#myModal2" onclick="myLeader('${teacher.unit}')">TA的上级
                                     </button>
                                 </td>
                             </tr>
@@ -573,31 +525,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel2">授课老师</h4>
+                <h4 class="modal-title" id="myModalLabel2">TA的上级</h4>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tr>
                             <td>
-                                学科
+                                姓名
                             </td>
                             <td>
-                                老师姓名
+                                管辖部门
                             </td>
-
                         </tr>
-                        <tbody class="showLeaderList">
-                        <tr></tr>
+                        <tbody class="myLeader">
                         </tbody>
-
                     </table>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div><!-- /.modal-content -->
+        </div>
     </div>
 </div>
 
