@@ -77,8 +77,8 @@
                     $("input[name='grade']").val(res.grade);
                     $("input[name='classNum']").val(res.classNum);
                     $("input[name='age']").val(res.age);
-                    $("select[name='sex']").select(res.sex);
-                    $("select[name='sex'] option[value='"+res.sex+"']").attr("selected","selected");
+                    $("select[name='sex']").val(res.sex);
+                    // $("select[name='sex'] option[value='"+res.sex+"']").attr("selected","selected");
                 }
             }
             $.ajax(ajax)

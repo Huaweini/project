@@ -22,6 +22,20 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
     <script type="text/javascript">
+        function addFrom() {
+            // console.log('addFromReady');
+            //临时法
+            $("input[name='id']").val(null);
+            $("input[name='realName']").val(null);
+            $("input[name='loginName']").val(null);
+            $("input[name='grade']").val(null);
+            $("input[name='classNum']").val(null);
+            $("input[name='age']").val(null);
+            $("select[name='sex']").val(null);
+            $("input[name='project']").val(null);
+            $("input[name='rank']").val(null);
+            $("input[name='unit']").val(null);
+        }
         function addTeacher() {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/addTeacher",
@@ -69,10 +83,10 @@
                     $("input[name='grade']").val(res.grade);
                     $("input[name='classNum']").val(res.classNum);
                     $("input[name='age']").val(res.age);
-                    $("input[name='sex']").val(res.sex);
-                    $("input[name='project']").val(res.project);
-                    $("input[name='rank']").val(res.rank);
-                    $("input[name='unit']").val(res.unit);
+                    $("select[name='sex']").val(res.sex);
+                    $("select[name='project']").val(res.project);
+                    $("select[name='rank']").val(res.rank);
+                    $("select[name='unit']").val(res.unit);
                 }
             }
             $.ajax(ajax)
@@ -172,7 +186,7 @@
                 <h2 class="sub-header" style="margin-left: 10px">教师管理</h2>
                 <div class="col-sm-1">
                     <!-- 按钮触发模态框 -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="addFrom()">新增</button>
                 </div>
                 <div class="col-sm-6">
                     <form action="" method="post" id="searchForm">
@@ -489,24 +503,99 @@
                             </tr>
                             <tr>
                                 <td>性别</td>
-                                <td><input name="sex" type="text" class="sex" placeholder="无"/></td>
+                                <td>
+                                    <select name="sex" style="height: 28px;">
+                                        <option value="男">
+                                            男
+                                        </option>
+                                        <option value="女">
+                                            女
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>科目</td>
-                                <td><input name="project" type="text" class="project" placeholder="无"/></td>
+                                <td>
+                                    <select name="project" style="height: 28px;">
+                                        <option value="">
+                                            无
+                                        </option>
+                                        <option value="语文">
+                                            语文
+                                        </option>
+                                        <option value="数学">
+                                            数学
+                                        </option>
+                                        <option value="物理">
+                                            物理
+                                        </option>
+                                        <option value="化学">
+                                            化学
+                                        </option>
+                                        <option value="英语">
+                                            英语
+                                        </option>
+                                        <option value="政治">
+                                            政治
+                                        </option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>职位</td>
                                 <td>
-                                    <input name="rank" type="text" class="rank" placeholder="无"/>
-                                    <div>
-                                        <span>1-校长,2-副校长,3-主任,4-班主任,5-老师</span>
-                                    </div>
+                                    <select name="rank" style="height: 28px;">
+                                        1-校长,2-副校长,3-主任,4-班主任,5-老师
+                                        <option value="1">
+                                            1-校长
+                                        </option>
+                                        <option value="2">
+                                            2-副校长
+                                        </option>
+                                        <option value="3">
+                                            3-主任
+                                        </option>
+                                        <option value="4">
+                                            4-班主任
+                                        </option>
+                                        <option value="5">
+                                            5-老师
+                                        </option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>部门</td>
-                                <td><input name="unit" type="text" class="unit" placeholder="无"/></td>
+                                <td>
+                                    <select name="unit" style="height: 28px;">
+                                        <option value="语文教研室">
+                                            语文教研室
+                                        </option>
+                                        <option value="数学教研室">
+                                            数学教研室
+                                        </option>
+                                        <option value="物理教研室">
+                                            物理教研室
+                                        </option>
+                                        <option value="化学教研室">
+                                            化学教研室
+                                        </option>
+                                        <option value="英语教研室">
+                                            英语教研室
+                                        </option>
+                                        <option value="政治教研室">
+                                            政治教研室
+                                        </option>
+                                        <option value="学生处">
+                                            学生处
+                                        </option>
+                                        <option value="管理层">
+                                            管理层
+                                        </option>
+                                    </select>
+                                </td>
+<%--                                <td><input name="unit" type="text" class="unit" placeholder="无"/></td>--%>
                             </tr>
                         </table>
                     </form>
