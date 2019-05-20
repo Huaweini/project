@@ -32,9 +32,9 @@
             $("input[name='classNum']").val(null);
             $("input[name='age']").val(null);
             $("select[name='sex']").val(null);
-            $("input[name='project']").val(null);
-            $("input[name='rank']").val(null);
-            $("input[name='unit']").val(null);
+            $("select[name='project']").val(null);
+            $("select[name='rank']").val(null);
+            $("select[name='unit']").val(null);
         }
         function addTeacher() {
             var ajax = {
@@ -404,21 +404,21 @@
                                 <td>职位</td>
                                 <td>
                                     <select name="rank" style="height: 28px;">
-                                        1-校长,2-副校长,3-主任,4-班主任,5-老师
+                                        校长,副校长,主任,班主任,老师
                                         <option value="1">
-                                            1-校长
+                                            校长
                                         </option>
                                         <option value="2">
-                                            2-副校长
+                                            副校长
                                         </option>
                                         <option value="3">
-                                            3-主任
+                                            主任
                                         </option>
                                         <option value="4">
-                                            4-班主任
+                                            班主任
                                         </option>
                                         <option value="5">
-                                            5-老师
+                                            老师
                                         </option>
                                     </select>
                                 </td>
@@ -546,21 +546,21 @@
                                 <td>职位</td>
                                 <td>
                                     <select name="rank" style="height: 28px;">
-                                        1-校长,2-副校长,3-主任,4-班主任,5-老师
+                                        校长,副校长,主任,班主任,老师
                                         <option value="1">
-                                            1-校长
+                                            校长
                                         </option>
                                         <option value="2">
-                                            2-副校长
+                                            副校长
                                         </option>
                                         <option value="3">
-                                            3-主任
+                                            主任
                                         </option>
                                         <option value="4">
-                                            4-班主任
+                                            班主任
                                         </option>
                                         <option value="5">
-                                            5-老师
+                                            老师
                                         </option>
                                     </select>
                                 </td>
