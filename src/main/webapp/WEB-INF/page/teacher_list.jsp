@@ -192,7 +192,7 @@
                     <form action="" method="post" id="searchForm">
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword" value="${keyword}"
-                                   placeholder="输入关键字">
+                                   placeholder="输入关键字"/>
                             <span class="input-group-btn" style="width: 1px">
                                 <button class="btn btn-default" type="button" onclick="searchTeacher()">查询</button>
                                 <input type="hidden" id="pageNum" name="pageNum" value="${page.pageNum}"/>
