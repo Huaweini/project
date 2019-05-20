@@ -23,7 +23,29 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
         function addFrom() {
-            $("#saveForm1").reset();
+            // console.log('addFromReady');
+            //临时法
+            $("input[name='id']").val(null);
+            $("input[name='realName']").val(null);
+            $("input[name='loginName']").val(null);
+            $("input[name='grade']").val(null);
+            $("input[name='classNum']").val(null);
+            $("input[name='age']").val(null);
+            $("select[name='sex']").val(null);
+
+            // $(':input','#saveForm1')
+            //     .not(':button, :submit, :reset, :hidden')
+            //     .val('')
+            //     .removeAttr('checked')
+            //     .removeAttr('selected');
+
+            // $("#saveForm1")[0].reset();
+
+            // $("#saveForm1").get(0).reset();
+
+            // $("#saveForm1").reset();
+
+            // console.log('addFromDone');
         }
         
         function addUser() {
