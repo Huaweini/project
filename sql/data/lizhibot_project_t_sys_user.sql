@@ -1,0 +1,15 @@
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (1, '倪', '小倪', 3, 13, '男', '2013', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (9, '博', 'BB', 3, 12, '男', '2013', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (10, '昵称', '李安安', 3, 14, '男', '2013', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (11, '网名', '小明', 4, 13, '男', '2013', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (12, '火星人', '小红', 2, 14, '女', '2018', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (13, '逃离地球', '小芳', 1, 14, '女', '2018', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (14, '杯具', '小王', 1, 15, '男', '2018', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (16, '鼠标', '小白', 1, 14, '女', '8', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (17, '键盘', '小丁', 1, 15, '女', '8', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (18, '机箱', '王刚', 3, 14, '男', '8', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (19, '笔记本', '小宋', 1, 14, '女', '8', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (20, '时间', '小唐', 1, 13, '女', '8', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (21, '小六子', '赵六', 1, 14, '男', '7', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (22, '钢蛋', '刘钢蛋', 1, 14, '男', '7', 0);
+INSERT INTO lizhibot_project.t_sys_user (id, login_name, real_name, class_num, age, sex, grade, isDel) VALUES (23, 'sdasd', '小宋', 1, 14, '女', '2018', 0);

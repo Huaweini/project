@@ -1,0 +1,14 @@
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8000, 'wwg', '王卫国', null, 50, '男', null, '', 1, '管理层', 1, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8001, 'lbb', '李冰冰', 2, 28, '女', 7, '语文', 5, '语文教研室', 1, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8002, 'fbb', '范冰冰', null, 29, '女', null, '', 3, '学生处', 1, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8003, 'lg', '李刚刚', 4, 30, '男', 7, '数学', 5, '数学教研室', 1, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8004, 'dkj', '刁可佳', 4, 25, '男', 7, '语文', 4, '语文教研室', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8005, 'whm', '王海梅', 1, 44, '女', 8, '数学', 5, '数学教研室', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8006, 'zw', '张文', 1, 40, '女', 8, '语文', 5, '语文教研室', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8007, 'dth', '丁台会', null, 40, '男', null, '', 3, '学生处', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8008, 'wqg', '王清国', 4, 35, '男', 7, '物理', 5, '物理教研室', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8009, 'ml', '马良', 1, 33, '男', 8, '物理', 5, '物理教研室', 1, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8010, 'bl', '柏丽', 4, 33, '女', 7, '化学', 5, '化学教研室', 1, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8011, 'wh', '王桓', 1, 37, '男', 8, '化学', 5, '化学教研室', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8012, 'cw', '陈伟', null, 45, '女', null, null, 2, '管理层', null, 0);
+INSERT INTO lizhibot_project.t_sys_teacher (id, login_name, real_name, class_num, age, sex, grade, project, `rank`, unit, isLeader, isDel) VALUES (8014, 'ytz', '杨天子', 4, 30, '女', 7, '英语', 5, '英语教研室', null, 0);

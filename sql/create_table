@@ -1,0 +1,52 @@
+create schema lizhibot_project collate utf8_general_ci;
+
+create table t_dic_data
+(
+	id int auto_increment
+		primary key,
+	code varchar(64) null,
+	value varchar(64) null,
+	type varchar(64) null,
+	`desc` varchar(64) null
+);
+
+create table t_sys_class
+(
+	grade int null,
+	class int null,
+	className char(20) null,
+	teacherID int null
+);
+
+create table t_sys_teacher
+(
+	id int auto_increment
+		primary key,
+	login_name varchar(255) charset utf8 not null,
+	real_name varchar(255) charset utf8 not null,
+	class_num int null,
+	age int not null,
+	sex varchar(255) charset utf8 not null,
+	grade int null,
+	project varchar(255) charset utf8 null,
+	`rank` int not null comment '1-校长2-副校长3-主任4-班主任5-老师',
+	unit varchar(255) charset utf8 null,
+	isLeader int(255) null comment '1-是所属部门领导0-普通员工',
+	isDel int default 0 null comment '是否删除 0-正常 1-已删除'
+)
+charset=latin1;
+
+create table t_sys_user
+(
+	id int auto_increment
+		primary key,
+	login_name varchar(255) charset utf8 not null,
+	real_name varchar(255) charset utf8 not null,
+	class_num int(255) not null,
+	age int(255) not null,
+	sex varchar(255) charset utf8 not null,
+	grade varchar(255) charset utf8 not null,
+	isDel int default 0 null comment '是否删除 0-正常 1-已删除'
+)
+charset=latin1;
+
