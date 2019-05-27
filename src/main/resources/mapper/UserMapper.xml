@@ -10,7 +10,6 @@
         <result property="realName" column="real_name" jdbcType="VARCHAR"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="sex" column="sex" jdbcType="VARCHAR"/>
-        <result property="grade" column="grade" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="select">
       SELECT * FROM t_sys_user
@@ -38,13 +37,13 @@
     <select id="searchUser" resultMap="userResultMap">
         select * from t_sys_user
             <if test="keyword!=null and keyword != ''">
-                where concat(login_name,real_name,age,sex,grade,class_num) like CONCAT('%',#{keyword},'%')
+                where concat(login_name,real_name,age,sex,class_num) like CONCAT('%',#{keyword},'%')
                 and isDel = 0
             </if>
             <if test="keyword == null or keyword == ''">
                 where isDel = 0
             </if>
-            order by grade
+            order by class_num
     </select>
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">

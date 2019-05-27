@@ -60,7 +60,7 @@
     <select id="myTeacher" resultMap="userResultMap">
         select project,real_name,rank
         from t_sys_teacher
-        where grade = #{grade} and class_num = #{classNum}
+        where class_num = #{classNum}
     </select>
 
     <select id="myLeader" resultMap="userResultMap">

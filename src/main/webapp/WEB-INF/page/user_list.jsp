@@ -23,7 +23,6 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
         function addFrom() {
-            // console.log('addFromReady');
             //临时法
             $("input[name='id']").val(null);
             $("input[name='realName']").val(null);
@@ -32,20 +31,6 @@
             $("input[name='classNum']").val(null);
             $("input[name='age']").val(null);
             $("select[name='sex']").val(null);
-
-            // $(':input','#saveForm1')
-            //     .not(':button, :submit, :reset, :hidden')
-            //     .val('')
-            //     .removeAttr('checked')
-            //     .removeAttr('selected');
-
-            // $("#saveForm1")[0].reset();
-
-            // $("#saveForm1").get(0).reset();
-
-            // $("#saveForm1").reset();
-
-            // console.log('addFromDone');
         }
         
         function addUser() {
@@ -121,11 +106,10 @@
             $("#searchForm").submit();
         }
 
-        function myTeacher(grade, classNum) {
+        function myTeacher(classNum) {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/myTeacher",
                 data: {
-                    "grade": grade,
                     "classNum": classNum
                 },
                 type: "post",
@@ -174,7 +158,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">学生管理系统</a>
+            <a class="navbar-brand" href="#">育才中学后台管理系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -236,7 +220,6 @@
                         <thead>
                         <tr>
                             <th>昵称</th>
-                            <th>年级</th>
                             <th>班级</th>
                             <th>姓名</th>
                             <th>年龄</th>
@@ -248,8 +231,20 @@
                         <c:forEach var="user" items="${page.list}" varStatus="status">
                             <tr>
                                 <td>${user.loginName}</td>
-                                <td>${user.grade}</td>
-                                <td>${user.classNum}</td>
+                                <td>
+                                    <c:if test="${user.classNum == 201804 }">
+                                        2018级4班
+                                    </c:if>
+                                    <c:if test="${user.classNum == 201805 }">
+                                        2018级5班
+                                    </c:if>
+                                    <c:if test="${user.classNum == 201806 }">
+                                        2018级6班
+                                    </c:if>
+                                    <c:if test="${user.classNum == 201807 }">
+                                        2018级7班
+                                    </c:if>
+                                </td>
                                 <td>${user.realName}</td>
                                 <td>${user.age}</td>
                                 <td>${user.sex}</td>
@@ -261,7 +256,7 @@
                                     <button type="button" class="btn btn-danger" onclick="del(${user.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
                                             data-toggle="modal" data-target="#myModal2"
-                                            onclick="myTeacher(${user.grade},${user.classNum})">授课老师
+                                            onclick="myTeacher(${user.classNum})">授课老师
                                     </button>
                                 </td>
                             </tr>

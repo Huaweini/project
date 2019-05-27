@@ -44,8 +44,8 @@ public class TeacherSericeImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> myTeacher(String grade, Integer classNum) {
-        return teacherDao.myTeacher(grade,classNum);
+    public List<Teacher> myTeacher(Integer classNum) {
+        return teacherDao.myTeacher(classNum);
     }
 
     @Override

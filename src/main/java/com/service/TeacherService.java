@@ -17,7 +17,7 @@ public interface TeacherService {
 
     List<Teacher> searchTeacher(String keyword);
 
-    List<Teacher> myTeacher(String grade, Integer classNum);
+    List<Teacher> myTeacher(Integer classNum);
 
     List<Teacher> myLeader(String unit);
 

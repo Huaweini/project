@@ -74,9 +74,9 @@ public class UserController {
     //查询自己班的授课老师
     @RequestMapping("/myTeacher")
     @ResponseBody
-    public Object myTeacher(@RequestParam(value = "grade") String grade, @RequestParam(value = "classNum") Integer classNum){
+    public Object myTeacher(@RequestParam(value = "classNum") Integer classNum){
         Map<String, List<Teacher>> resultMap = new HashMap<>();
-        List<Teacher> myTeacherList = teacherService.myTeacher(grade,classNum);
+        List<Teacher> myTeacherList = teacherService.myTeacher(classNum);
         resultMap.put("myTeacherList", myTeacherList);
         return resultMap;
     }

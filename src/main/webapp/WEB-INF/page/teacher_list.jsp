@@ -145,7 +145,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">教师管理系统</a>
+            <a class="navbar-brand" href="#">育才中学后台管理系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -207,8 +207,7 @@
                         <thead>
                         <tr>
                             <th>昵称</th>
-                            <th>年级</th>
-                            <th>班级</th>
+<%--                            <th>班级</th>--%>
                             <th>姓名</th>
                             <th>年龄</th>
                             <th>性别</th>
@@ -222,8 +221,20 @@
                         <c:forEach var="teacher" items="${page.list}" varStatus="status">
                             <tr>
                                 <td>${teacher.loginName}</td>
-                                <td>${teacher.grade}</td>
-                                <td>${teacher.classNum}</td>
+<%--                                <td>--%>
+<%--                                    <c:if test="${teacher.classNum == 201804 }">--%>
+<%--                                        2018级4班--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${teacher.classNum == 201805 }">--%>
+<%--                                        2018级5班--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${teacher.classNum == 201806 }">--%>
+<%--                                        2018级6班--%>
+<%--                                    </c:if>--%>
+<%--                                    <c:if test="${teacher.classNum == 201807 }">--%>
+<%--                                        2018级7班--%>
+<%--                                    </c:if>--%>
+<%--                                </td>--%>
                                 <td>${teacher.realName}</td>
                                 <td>${teacher.age}</td>
                                 <td>${teacher.sex}</td>
