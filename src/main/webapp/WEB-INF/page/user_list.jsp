@@ -59,7 +59,6 @@
                     $("input[name='id']").val(res.id);
                     $("input[name='realName']").val(res.realName);
                     $("input[name='loginName']").val(res.loginName);
-                    $("input[name='grade']").val(res.grade);
                     $("input[name='classNum']").val(res.classNum);
                     $("input[name='age']").val(res.age);
                     $("select[name='sex']").val(res.sex);
@@ -343,10 +342,6 @@
                                 <td><input name="loginName" type="text"/></td>
                             </tr>
                             <tr>
-                                <td>年级</td>
-                                <td><input name="grade" type="text"/></td>
-                            </tr>
-                            <tr>
                                 <td>班级</td>
                                 <td><input name="classNum" type="text"/></td>
                             </tr>
@@ -401,10 +396,6 @@
                             <tr>
                                 <td>昵称</td>
                                 <td><input name="loginName" type="text" class="loginName"/></td>
-                            </tr>
-                            <tr>
-                                <td>年级</td>
-                                <td><input name="grade" type="text" class="grade"/></td>
                             </tr>
                             <tr>
                                 <td>班级</td>
