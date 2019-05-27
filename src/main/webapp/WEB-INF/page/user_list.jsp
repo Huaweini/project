@@ -256,7 +256,7 @@
                                     <button type="button" class="btn btn-danger" onclick="del(${user.id})">删除</button>
                                     <button type="button" class="btn btn-primary"
                                             data-toggle="modal" data-target="#myModal2"
-                                            onclick="myTeacher(${user.classNum})">授课老师
+                                            onclick="myTeacher(${user.classNum})">TA的老师
                                     </button>
                                 </td>
                             </tr>
