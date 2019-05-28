@@ -8,6 +8,7 @@ import com.github.pagehelper.PageInfo;
 
 import com.pojo.Teacher;
 import com.pojo.User;
+import com.service.DicDataService;
 import com.service.TeacherService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private DicDataService dicDataService;
 
     //学生管理
     @RequestMapping("/page")
@@ -40,6 +43,9 @@ public class UserController {
         List<User> list = userService.searchUser(keyword);
         //查询出来的数据，和连续显示的页数
         PageInfo res = new PageInfo(list, 5);
+        //查询字典中的班级列表
+        List<Object> classList = dicDataService.getClassList();
+        model.addAttribute("classList", classList);
         model.addAttribute("page",res);
         model.addAttribute("keyword",keyword);
         return "user_list";

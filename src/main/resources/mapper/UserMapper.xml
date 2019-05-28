@@ -15,6 +15,14 @@
       SELECT * FROM t_sys_user
     </sql>
 
+    <sql id="getClassList">
+        select d.value,u.class_num from  t_dic_data d
+        left join t_sys_user u
+        on u.class_num = d.code
+        where d.type = 'class_num'
+        GROUP BY class_num
+    </sql>
+
     <select id="selectById" resultMap="userResultMap">
         <include refid="select"/>
         where id=#{id}
@@ -45,6 +53,8 @@
             </if>
             order by class_num
     </select>
+
+
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_sys_user

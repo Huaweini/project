@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DicDataDao">
+    <resultMap type="DicData" id="userResultMap">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="value" column="value" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="desc" column="desc" jdbcType="VARCHAR"/>
+
+<!--        <association property="classNum" javaType="User">-->
+<!--            <id property="id" column="id" jdbcType="INTEGER"/>-->
+<!--            <result property="loginName" column="login_name" jdbcType="VARCHAR"/>-->
+<!--            <result property="classNum" column="class_num" jdbcType="INTEGER"/>-->
+<!--            <result property="realName" column="real_name" jdbcType="VARCHAR"/>-->
+<!--            <result property="age" column="age" jdbcType="INTEGER"/>-->
+<!--            <result property="sex" column="sex" jdbcType="VARCHAR"/>-->
+<!--        </association>-->
+
+    </resultMap>
+
+    <select id="getClassList" resultMap="userResultMap">
+        select d.value,d.code from  t_dic_data d
+        left join t_sys_user u
+        on u.class_num = d.code
+        where d.type = 'class_num'
+        GROUP BY class_num
+    </select>
+
+<!--    <select id="selectById" resultMap="userResultMap">-->
+<!--        <include refid="select"/>-->
+<!--        where id=#{id}-->
+<!--    </select>-->
+
+<!--    <select id="pageList" resultMap="userResultMap">-->
+<!--        <include refid="select"/>-->
+<!--        where isDel = 0-->
+<!--        limit #{offset},#{size}-->
+<!--    </select>-->
+
+<!--    <select id="pageTotal" resultType="java.lang.Integer">-->
+<!--        select count(*) from t_sys_user-->
+<!--    </select>-->
+
+<!--    <select id="getById" resultMap="userResultMap">-->
+<!--      select * form t_sys_user WHERE id = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="searchUser" resultMap="userResultMap">-->
+<!--        select * from t_sys_user-->
+<!--        <if test="keyword!=null and keyword != ''">-->
+<!--            where concat(login_name,real_name,age,sex,class_num) like CONCAT('%',#{keyword},'%')-->
+<!--            and isDel = 0-->
+<!--        </if>-->
+<!--        <if test="keyword == null or keyword == ''">-->
+<!--            where isDel = 0-->
+<!--        </if>-->
+<!--        order by class_num-->
+<!--    </select>-->
+
+
+
+<!--    <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">-->
+<!--        INSERT into t_sys_user-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--            <if test="loginName != null and loginName != '' ">-->
+<!--                login_name,-->
+<!--            </if>-->
+<!--            <if test="classNum != null and classNum != '' ">-->
+<!--                class_num,-->
+<!--            </if>-->
+<!--            <if test="realName != null and realName != '' ">-->
+<!--                real_name,-->
+<!--            </if>-->
+<!--            <if test="age != null and age != '' ">-->
+<!--                age,-->
+<!--            </if>-->
+<!--            <if test="sex != null and sex != '' ">-->
+<!--                sex,-->
+<!--            </if>-->
+<!--            <if test="grade != null and grade != '' ">-->
+<!--                grade,-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--        <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--            <if test="loginName != null and loginName != '' ">-->
+<!--                #{loginName,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--            <if test="classNum != null and classNum != '' ">-->
+<!--                #{classNum,jdbcType=INTEGER},-->
+<!--            </if>-->
+<!--            <if test="realName != null and realName != '' ">-->
+<!--                #{realName,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--            <if test="age != null and age != '' ">-->
+<!--                #{age,jdbcType=INTEGER},-->
+<!--            </if>-->
+<!--            <if test="sex != null and sex != '' ">-->
+<!--                #{sex,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--            <if test="grade != null and grade != '' ">-->
+<!--                #{grade,jdbcType=INTEGER},-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </insert>-->
+
+<!--    <update id="updateSelective" parameterType="com.pojo.User">-->
+<!--        UPDATE t_sys_user-->
+<!--        <set>-->
+<!--            <if test="loginName!=null and loginName != ''">-->
+<!--                login_name = #{loginName},-->
+<!--            </if>-->
+<!--            <if test="classNum!=null and classNum != ''">-->
+<!--                class_num = #{classNum},-->
+<!--            </if>-->
+<!--            <if test="realName!=null and realName != ''">-->
+<!--                real_name = #{realName},-->
+<!--            </if>-->
+<!--            <if test="age!=null and age != ''">-->
+<!--                age = #{age},-->
+<!--            </if>-->
+<!--            <if test="sex!=null and sex != ''">-->
+<!--                sex = #{sex},-->
+<!--            </if>-->
+<!--            <if test="grade!=null and grade != ''">-->
+<!--                grade = #{grade},-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        WHERE id = #{id}-->
+<!--    </update>-->
+
+<!--    <update id="del" parameterType="com.pojo.User">-->
+<!--        UPDATE t_sys_user-->
+<!--        SET  isDel = 1-->
+<!--        WHERE id = #{id}-->
+<!--    </update>-->
+
+</mapper>
