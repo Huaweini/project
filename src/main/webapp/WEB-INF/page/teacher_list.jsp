@@ -17,7 +17,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>教师管理系统</title>
+    <title>育才中学后台管理系统</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
@@ -162,7 +162,7 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
-                <li><a href="#">正在开发……</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/unitPage">组织结构</a></li>
                 <li><a href="#">正在开发……</a></li>
             </ul>
             <ul class="nav nav-sidebar">

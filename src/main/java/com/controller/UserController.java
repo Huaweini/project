@@ -143,4 +143,9 @@ public class UserController {
         return teacherService.del(teacher.getId());
     }
 
+    @RequestMapping("/unitPage")
+    public String unitPage() {
+        return "unit_list";
+    }
+
 }
