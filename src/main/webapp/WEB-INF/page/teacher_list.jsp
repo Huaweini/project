@@ -80,7 +80,7 @@
                     $("input[name='id']").val(res.id);
                     $("input[name='realName']").val(res.realName);
                     $("input[name='loginName']").val(res.loginName);
-                    $("input[name='classNum']").val(res.classNum);
+                    $("select[name='classNum']").val(res.classNum);
                     $("input[name='age']").val(res.age);
                     $("select[name='sex']").val(res.sex);
                     $("select[name='project']").val(res.project);
@@ -354,7 +354,16 @@
                             </tr>
                             <tr>
                                 <td>班级</td>
-                                <td><input name="classNum" type="text"/></td>
+                                <td>
+                                    <select name="classNum" style="height: 28px;">
+                                        <option>--请选择--</option>
+                                        <c:forEach var="classList" items="${classList}" varStatus="status">
+                                            <option value="${classList.code}">
+                                                    ${classList.value}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>姓名</td>
@@ -492,7 +501,16 @@
                             </tr>
                             <tr>
                                 <td>班级</td>
-                                <td><input name="classNum" type="text" class="classNum" placeholder="无"/></td>
+                                <td>
+                                    <select name="classNum" style="height: 28px;">
+                                        <option>--请选择--</option>
+                                        <c:forEach var="classList" items="${classList}" varStatus="status">
+                                            <option value="${classList.code}">
+                                                    ${classList.value}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>姓名</td>

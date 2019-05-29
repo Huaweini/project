@@ -7,7 +7,6 @@ public class Teacher {
     private Integer classNum;
     private Integer age;
     private String sex;
-    private String grade;
     private String project;
     private Integer rank;
     private String unit;
@@ -77,14 +76,6 @@ public class Teacher {
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
     }
 
     public String getProject() {

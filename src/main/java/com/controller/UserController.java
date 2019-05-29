@@ -110,6 +110,8 @@ public class UserController {
         List list = teacherService.searchTeacher(keyword);
         //查询出来的数据，和连续显示的页数
         PageInfo res = new PageInfo(list, 5);
+        List<Object> classList = dicDataService.getClassList();
+        model.addAttribute("classList", classList);
         model.addAttribute("page",res);
         model.addAttribute("keyword",keyword);
         return "teacher_list";
