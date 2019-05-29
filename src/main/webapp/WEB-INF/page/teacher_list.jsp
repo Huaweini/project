@@ -148,7 +148,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">注册</a></li>
                 <li><a href="#">登陆</a></li>
                 <li><a href="#">退出</a></li>
             </ul>
