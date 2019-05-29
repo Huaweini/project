@@ -55,7 +55,18 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
-                <li><a href="${pageContext.request.contextPath}/user/unitPage">组织结构</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                       href="${pageContext.request.contextPath}/user/unitPage">
+                        组织结构 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>班级</li>
+                        <li>部门</li>
+                        <li>职级</li>
+                        <li>学科</li>
+                    </ul>
+                </li>
                 <li><a href="#">正在开发……</a></li>
             </ul>
             <ul class="nav nav-sidebar">
@@ -74,10 +85,6 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -490px">
             <div class="row">
                 <h2 class="sub-header" style="margin-left: 10px">组织结构管理</h2>
-                <div class="col-sm-1">
-                    <!-- 按钮触发模态框 -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"onclick="addFrom()">新增</button>
-                </div>
             </div>
             <div class="row">
 
