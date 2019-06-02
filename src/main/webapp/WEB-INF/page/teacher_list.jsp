@@ -162,7 +162,17 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/user/page">学生管理 <span class="sr-only">(current)</span></a>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/user/teacherPage">教师管理</a></li>
-                <li><a href="${pageContext.request.contextPath}/user/unitPage">组织结构</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        组织结构 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/unit/classConfigPage">班级-结构管理</a></li>
+                        <li><a href="#">部门-结构管理</a></li>
+                        <li><a href="#">职级-结构管理</a></li>
+                        <li><a href="#">学科-结构管理</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">正在开发……</a></li>
             </ul>
             <ul class="nav nav-sidebar">
