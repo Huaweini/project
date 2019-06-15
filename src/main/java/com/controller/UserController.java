@@ -144,4 +144,9 @@ public class UserController {
         return "classConfigPage";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
 }
