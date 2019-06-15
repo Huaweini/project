@@ -42,4 +42,10 @@ public class UserServiceImpl implements UserService {
         return userDao.searchUser(keyword);
     }
 
+    @Override
+    public User checkLogin(User user) {
+
+        return null;
+    }
+
 }

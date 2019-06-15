@@ -9,6 +9,15 @@ public class User {
     private String sex;
     private String grade;
     private String keyword;//查询时传入的关键字
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getKeyword() {
         return keyword;

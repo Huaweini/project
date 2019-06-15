@@ -149,4 +149,11 @@ public class UserController {
         return "login";
     }
 
+    @RequestMapping("/checkLogin")
+    @ResponseBody
+    public Object checkLogin(User user){
+
+        return "login";
+    }
+
 }

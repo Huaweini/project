@@ -13,20 +13,39 @@
     <meta name="author" content="">
     <title>登录</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function checkLogin() {
+            var ajax = {
+                url: "${pageContext.request.contextPath}/user/checkLogin",
+                data: $('#saveForm').serializeArray(),
+                type: "post",
+                dataType: "json",
+                success: function (res) {
+
+                }
+            }
+            $.ajax(ajax)
+        }
+    </script>
 </head>
 <body>
 <div style="width: 50%; margin: 0 600px; padding-top: 400px;">
-    <form class="form-horizontal">
+    <h1 style="margin-left: 150px">
+        育才中学后台管理系统
+    </h1>
+    <form class="form-horizontal" id="saveForm">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">
-                <input style="width: 50%" type="email" class="form-control" id="inputEmail3" placeholder="用户名">
+                <input style="width: 50%" type="email" class="form-control" id="inputEmail3"
+                       placeholder="用户名" name="loginName">
             </div>
         </div>
         <div class="form-group">
             <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
-                <input style="width: 50%" type="password" class="form-control" id="inputPassword3" placeholder="密码">
+                <input style="width: 50%" type="password" class="form-control" id="inputPassword3"
+                       placeholder="密码" name="password">
             </div>
         </div>
         <div class="form-group">

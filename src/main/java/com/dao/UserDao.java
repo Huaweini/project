@@ -12,4 +12,6 @@ public interface UserDao extends BaseDataDao<User> {
     int del(User param);
 
     List<User> searchUser(@Param("keyword") String keyword);
+
+    User checkLogin(User user);
 }
