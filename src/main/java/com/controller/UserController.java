@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -152,8 +153,14 @@ public class UserController {
     @RequestMapping("/checkLogin")
     @ResponseBody
     public Object checkLogin(User user){
-
-        return "login";
+        JSONObject json = new JSONObject();
+        user = userService.checkLogin(user.getLoginName(), user.getPassword());
+        if (user != null) {
+            json.put("success", user);
+            return json;
+        }
+        json.put("error", user);
+        return json;
     }
 
 }

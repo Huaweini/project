@@ -17,5 +17,5 @@ public interface UserService {
 
     List<User>  searchUser(String keyword);
 
-    User checkLogin(User user);
+    User checkLogin(String loginName,String password);
 }

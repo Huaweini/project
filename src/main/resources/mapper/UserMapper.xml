@@ -10,6 +10,7 @@
         <result property="realName" column="real_name" jdbcType="VARCHAR"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="password" column="sex" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="select">
       SELECT * FROM t_sys_user
@@ -46,7 +47,9 @@
             order by class_num
     </select>
 
-
+    <select id="findByLoginName" resultMap="userResultMap">
+      select * from t_sys_user WHERE login_name = #{loginName}
+    </select>
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT into t_sys_user
