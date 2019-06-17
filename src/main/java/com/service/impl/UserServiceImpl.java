@@ -44,11 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkLogin(String loginName,String password) {
-        User user = userDao.findByLoginName(loginName);
-        if(user!=null && user.getPassword().equals(password)){
-            return user;
-        }
-        return null;
+        return userDao.findByLoginNameAndPassword(loginName,password);
     }
 
 }

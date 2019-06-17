@@ -15,17 +15,22 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script>
         function checkLogin() {
+            var loginName = $("#loginName").val();
+            var password = $("#password").val();
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/checkLogin",
-                data: $('#saveForm').serializeArray(),
+                data:{"loginName":loginName,"password":password} ,
                 type: "post",
                 dataType: "json",
-                success: function (res) {
-                    window.location.href="${pageContext.request.contextPath}/user/page"
+                async: true,
+                success: function (data) {
+                    if (data == null){
+                        alert("没有这个用户")
+                    }
+                    else {
+                        window.location.href="${pageContext.request.contextPath}/user/page";
+                    }
                 },
-                error:function (res) {
-                    window.alert("用户名或密码错误")
-                }
             }
             $.ajax(ajax)
         }
@@ -43,14 +48,14 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10">
-                    <input style="width: 50%" type="text" class="form-control"
+                    <input style="width: 50%" type="text" class="form-control" id="loginName"
                            placeholder="用户名" name="loginName">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-10">
-                    <input style="width: 50%" type="password" class="form-control"
+                    <input style="width: 50%" type="password" class="form-control" id="password"
                            placeholder="密码" name="password">
                 </div>
             </div>

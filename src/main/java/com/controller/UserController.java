@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -152,15 +153,15 @@ public class UserController {
 
     @RequestMapping("/checkLogin")
     @ResponseBody
-    public Object checkLogin(User user){
-        JSONObject json = new JSONObject();
-        user = userService.checkLogin(user.getLoginName(), user.getPassword());
+    public Object checkLogin(String loginName, String password, HttpSession session){
+        System.out.println(loginName);
+        User user = userService.checkLogin(loginName, password);
         if (user != null) {
-            json.put("success", user);
-            return json;
+            session.setAttribute("user_session",user);
+            return user;
+        }else {
+            return null;
         }
-        json.put("error", user);
-        return json;
     }
 
 }

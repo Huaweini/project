@@ -47,8 +47,8 @@
             order by class_num
     </select>
 
-    <select id="findByLoginName" resultMap="userResultMap">
-      select * from t_sys_user WHERE login_name = #{loginName}
+    <select id="findByLoginNameAndPassword" resultType="com.pojo.User">
+      select * from t_sys_user WHERE login_name = #{loginName} and password = #{password}
     </select>
 
     <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
