@@ -20,10 +20,10 @@
                 data: $('#saveForm').serializeArray(),
                 type: "post",
                 dataType: "json",
-                success: function (res) {
+                success: function (data) {
                     window.location.href="${pageContext.request.contextPath}/user/page"
                 },
-                error:function (res) {
+                error:function (data) {
                     window.alert("用户名或密码错误")
                 }
             }
