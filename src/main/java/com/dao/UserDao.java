@@ -13,5 +13,5 @@ public interface UserDao extends BaseDataDao<User> {
 
     List<User> searchUser(@Param("keyword") String keyword);
 
-    User findByLoginName(String loginName);
+    User findByLoginNameAndPassword(@Param("loginName") String loginName,@Param("password") String password);
 }
