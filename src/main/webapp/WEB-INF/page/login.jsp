@@ -17,14 +17,14 @@
         function checkLogin() {
             var ajax = {
                 url: "${pageContext.request.contextPath}/user/checkLogin",
-                data: $('#saveForm').serializeArray(),
+                data: $('#saveForm').serialize(),
                 type: "post",
                 dataType: "json",
                 success: function (data) {
-                    window.location.href="${pageContext.request.contextPath}/user/page"
-                },
-                error:function (data) {
-                    window.alert("用户名或密码错误")
+                    console.log(data);
+                    if (data!=null) {
+                    window.location.href="${pageContext.request.contextPath}/user/page";
+                    }
                 }
             }
             $.ajax(ajax)
@@ -39,7 +39,7 @@
         </h1>
     </div>
     <div style="width: 50%;margin: 0 600px;padding-top: 50px;">
-        <form class="form-horizontal" id="saveForm">
+        <form class="form-horizontal" id="saveForm" method="post">
             <div class="form-group">
                 <label class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10">
@@ -56,20 +56,17 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> 记住我
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
                     <button class="btn btn-default" onclick="checkLogin()">登录</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

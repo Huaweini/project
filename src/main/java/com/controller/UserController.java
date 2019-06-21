@@ -156,13 +156,13 @@ public class UserController {
     public Object checkLogin(User user){
         JSONObject json = new JSONObject();
         user = userService.checkLogin(user.getLoginName(), user.getPassword());
-//        if (user != null) {
-//            json.put("success", user);
-//            return json;
-//        }
-//        json.put("error", user);
-        json.put("user", user);
-        return json;
+        if (user != null) {
+            json.put("success", user);
+            return json;
+        }
+        else {
+            return null;
+        }
     }
 
 }
