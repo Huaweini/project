@@ -21,9 +21,9 @@
                 type: "post",
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
-                    if (data!=null) {
-                    window.location.href="${pageContext.request.contextPath}/user/page";
+                    console.log(data)
+                    if (data != null || data != "") {
+                        window.location.href = "${pageContext.request.contextPath}/user/page";
                     }
                 }
             }
@@ -54,12 +54,12 @@
                            placeholder="密码" name="password">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-default" onclick="checkLogin()">登录</button>
-                </div>
-            </div>
         </form>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-default" onclick="checkLogin()">登录</button>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Bootstrap core JavaScript

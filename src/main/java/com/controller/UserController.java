@@ -155,6 +155,7 @@ public class UserController {
     @ResponseBody
     public Object checkLogin(User user){
         JSONObject json = new JSONObject();
+//        Map<String, User> resultMap = new HashMap<>();
         user = userService.checkLogin(user.getLoginName(), user.getPassword());
         if (user != null) {
             json.put("success", user);
@@ -163,6 +164,8 @@ public class UserController {
         else {
             return null;
         }
+//        resultMap.put("user", user);
+//        return resultMap;
     }
 
 }
