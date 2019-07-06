@@ -10,6 +10,7 @@ import com.pojo.User;
 import com.service.DicDataService;
 import com.service.TeacherService;
 import com.service.UserService;
+import org.omg.CORBA.OBJECT_NOT_EXIST;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -154,18 +155,16 @@ public class UserController {
     @RequestMapping("/checkLogin")
     @ResponseBody
     public Object checkLogin(User user){
-        JSONObject json = new JSONObject();
-//        Map<String, User> resultMap = new HashMap<>();
+//        JSONObject json = new JSONObject();
+        Map<String, Object> map = new HashMap<>();
         user = userService.checkLogin(user.getLoginName(), user.getPassword());
         if (user != null) {
-            json.put("success", user);
-            return json;
+            map.put("code", "0");
         }
         else {
-            return null;
+            map.put("code", "1");
         }
-//        resultMap.put("user", user);
-//        return resultMap;
+        return map;
     }
 
 }

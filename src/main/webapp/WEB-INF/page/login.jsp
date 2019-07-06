@@ -21,9 +21,10 @@
                 type: "post",
                 dataType: "json",
                 success: function (data) {
-                    console.log(data)
-                    if (data != null || data != "") {
+                    if (data.code == "0") {
                         window.location.href = "${pageContext.request.contextPath}/user/page";
+                    }else{
+                        window.alert("用户名或密码错误")
                     }
                 }
             }
