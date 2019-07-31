@@ -1,16 +1,13 @@
 package com.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-
 import com.pojo.Teacher;
 import com.pojo.User;
 import com.service.DicDataService;
 import com.service.TeacherService;
 import com.service.UserService;
-import org.omg.CORBA.OBJECT_NOT_EXIST;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,7 +99,7 @@ public class UserController {
     }
 
     @RequestMapping("/teacherPage")
-    public String teacherPage(Model model, Page<User> page,  @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, String keyword){
+    public String teacherPage(Model model, Page<User> page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, String keyword){
         //在查询之前需要调用，传入页码，以及每页的大小
         PageHelper.startPage(page.getPageNum(), pageSize);
         List list = teacherService.searchTeacher(keyword);

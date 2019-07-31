@@ -1,8 +1,6 @@
 package com.service.impl;
 
 import com.dao.UserDao;
-
-import com.github.pagehelper.Page;
 import com.pojo.User;
 import com.service.UserService;
 import org.springframework.stereotype.Service;

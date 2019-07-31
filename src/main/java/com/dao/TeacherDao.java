@@ -10,9 +10,9 @@ public interface TeacherDao extends BaseDataDao<Teacher> {
 
     int del(Long id);
 
-    List<Teacher> searchTeacher(@Param("keyword")String keyword);
+    List<Teacher> searchTeacher(@Param("keyword") String keyword);
 
-    List<Teacher> myTeacher(@Param("classNum")Integer classNum);
+    List<Teacher> myTeacher(@Param("classNum") Integer classNum);
 
     List<Teacher> myLeader(String unit);
 }

@@ -13,9 +13,9 @@ public interface UserService {
 
     User selectById(Long id);
 
-    int del (User param);
+    int del(User param);
 
     List<User>  searchUser(String keyword);
 
-    User checkLogin(String loginName,String password);
+    User checkLogin(String loginName, String password);
 }

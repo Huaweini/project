@@ -48,9 +48,4 @@ public class DicData {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-    public static void main(String[] args) {
-        String a = "123";
-        String b = "123";
-    }
 }
